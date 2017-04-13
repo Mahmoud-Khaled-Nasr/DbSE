@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
+
+Route::resource('signin',"SigninController",['only'=>['show']]);
+Route::resource('visitor',"VisitorController",['except'=>['create','index','edit']]);
+Route::resource('pwso',"PWSOController",['except'=>['create','index','edit']]);
+Route::resource('wso',"WSOController",['except'=>['create','index','edit']]);
