@@ -22,11 +22,11 @@ class CreatePWSOsTable extends Migration
             $table->timestamps();
 
             $table->string('name',40);
-            $table->string('username',20);
-            $table->string('email',20);
+            $table->string('username',20)->unique();
+            $table->string('email',20)->unique();
             $table->string('password',100);
 
-            $table->unique(['username','email']);
+            //$table->unique(['username','email']);
         });
     }
 
