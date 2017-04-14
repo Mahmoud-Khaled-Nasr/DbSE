@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
  */
 
 /*
- * TODO
  * the idea is to store the emails that waiting to be verified and create a random code and send it by email
  * then after the verification the email is removed from the table
  */

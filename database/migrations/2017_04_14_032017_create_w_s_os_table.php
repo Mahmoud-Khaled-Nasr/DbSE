@@ -14,8 +14,7 @@ class CreateWSOsTable extends Migration
     public function up()
     {
         /*
-         * TODO
-         * complete the WSO table
+         * TODO complete the WSO table
          */
         Schema::create('w_s_os', function (Blueprint $table) {
             $table->increments('id');

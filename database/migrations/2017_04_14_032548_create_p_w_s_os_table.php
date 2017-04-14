@@ -14,8 +14,7 @@ class CreatePWSOsTable extends Migration
     public function up()
     {
         /*
-         * @TODO
-         * complete the PWSO table
+         * @TODO complete the PWSO table fields
          */
         Schema::create('p_w_s_os', function (Blueprint $table) {
             $table->increments('id');
