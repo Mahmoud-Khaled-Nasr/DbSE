@@ -21,3 +21,4 @@ Route::resource('signin',"SigninController",['only'=>['show']]);
 Route::resource('visitor',"VisitorController",['except'=>['create','index','edit']]);
 Route::resource('pwso',"PWSOController",['except'=>['create','index','edit']]);
 Route::resource('wso',"WSOController",['except'=>['create','index','edit']]);
+Route::resource('emailverification','EmailVerificationController',['only'=>['store','update','destroy']]);
