@@ -6,6 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateEmailsTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -16,6 +17,11 @@ class CreateEmailsTable extends Migration
         Schema::create('emails', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+
+            $table->string('email',30);
+            $table->integer('code');
+
+            $table->unique(['email','code']);
         });
     }
 
