@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\University;
+use App\Faculty;
+
+//TODO fix the UniversityController
 
 class UniversityController extends Controller
 {
@@ -14,7 +18,7 @@ class UniversityController extends Controller
     */
     public function index()
     {
-        //TODO fix the UniversityController  index function
+
         $universities = University::all();
         /*foreach ($universities as $university)
         {

@@ -36,6 +36,6 @@ class CreatePWSOsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('p_w_s_os');
+        Schema::dropIfExists('pwsos');
     }
 }

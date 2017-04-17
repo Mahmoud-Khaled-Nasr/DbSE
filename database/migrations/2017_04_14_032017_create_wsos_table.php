@@ -36,6 +36,6 @@ class CreateWSOsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('w_s_os');
+        Schema::dropIfExists('wsos');
     }
 }
