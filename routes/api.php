@@ -24,5 +24,6 @@ Route::group(['prefix'=>'v1'],function(){
     Route::resource('wso',"WSOController",['except'=>['create','index','edit']]);
     Route::resource('emailverification','EmailVerificationController',['only'=>['store','update','destroy']]);
     Route::resource('university','UniversityController',['only'=>['show','index']]);
+    Route::resource('faculty','FacultyController',['only'=>['show','index']]);
 } );
 
