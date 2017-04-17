@@ -32,10 +32,14 @@ class UniversityController extends Controller
     public function show($id)
     {
         $university = University::all()->find($id);
-        $faculties= Faculty::where('uni_id','=',$id)->get();
+        $faculties= Faculty::where('university_id','=',$id)->get();
+        $data=array();
+        foreach ($faculties as $faculty){
+            array_push($data,['id'=>$faculty->fid ,'name'=>$faculty->fname]);
+        }
         $response = [
             'university' => $university,
-            'faculties' => $faculties
+            'faculties' => $data
         ];
         return response()->json($response,200);
     }
