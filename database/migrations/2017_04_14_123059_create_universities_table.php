@@ -17,15 +17,17 @@ class CreateUniversitiesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name',40);
-            $table->string('president_name',30);
-            $table->string('past_presidents',255);
-            $table->string('url',255);
-            $table->string('fb_url',255);
-            $table->string('contacts',30);
+            $table->string('website_url',255);
+            $table->string('facebook_page',255);
             $table->string('description',255);
-            $table->longText('uni_logo');
+            $table->longText('logo');
             $table->double('x',20,15);
             $table->double('y',20,15);
+
+            //TODO put them in another tables with forgien keys
+            $table->string('president_name',30);
+            $table->string('past_presidents',255);
+            $table->string('contacts',30);
         });
     }
 

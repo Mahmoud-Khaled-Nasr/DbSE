@@ -18,12 +18,12 @@ class FacultyTableSeeder extends Seeder
             $table->fname = str_random(10);
             $table->fpresident_name = str_random(10);
             $table->fpast_presidents = str_random(10);
-            $table->furl = str_random(10);
-            $table->ffb_url = str_random(10);
+            $table->fwebsite = str_random(10);
+            $table->ffacebook_page = str_random(10);
             $table->fcontacts = str_random(10);
             $table->fdescription = str_random(10);
             $table->departments = str_random(10);
-            $table->f_logo = str_random(10);
+            $table->flogo = str_random(10);
             $table->fx = rand(100, 900) / 100;
             $table->fy = rand(100, 900) / 100;
 
