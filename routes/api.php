@@ -25,3 +25,5 @@ Route::group(['prefix'=>'v1'],function(){
     Route::resource('emailverification','EmailVerificationController',['only'=>['store','update','destroy']]);
     Route::resource('university','UniversityController',['only'=>['show','index']]);
 } );
+
+//a change
