@@ -15,7 +15,7 @@ class CreateFacultiesTable extends Migration
     {
         Schema::create('faculties', function (Blueprint $table) {
             $table->increments('fid');
-            $table->unsignedInteger('uni_id');
+            $table->unsignedInteger('university_id');
             $table->timestamps();
             $table->string('fname',40);
             $table->string('fpresident_name',30);
@@ -24,14 +24,14 @@ class CreateFacultiesTable extends Migration
             $table->string('ffb_url',255);
             $table->string('fcontacts',30);
             $table->string('fdescription',255);
-            $table->string('departs',255);
+            $table->string('departments',255);
             $table->longText('f_logo');
             $table->double('fx',20,15);
             $table->double('fy',20,15);
         });
 
         Schema::table('faculties', function(Blueprint $table) {
-            $table->foreign('uni_id')->references('id')->on('universities')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
