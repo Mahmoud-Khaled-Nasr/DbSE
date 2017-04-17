@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWSOsTable extends Migration
+class CreatePWSOsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class CreateWSOsTable extends Migration
     public function up()
     {
         /*
-         * TODO complete the WSO table
+         * @TODO complete the PWSO table fields
          */
-        Schema::create('w_s_os', function (Blueprint $table) {
+        Schema::create('pwsos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 
@@ -36,6 +36,6 @@ class CreateWSOsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('w_s_os');
+        Schema::dropIfExists('p_w_s_os');
     }
 }
