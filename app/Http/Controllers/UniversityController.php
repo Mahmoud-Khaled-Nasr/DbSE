@@ -18,15 +18,8 @@ class UniversityController extends Controller
     */
     public function index()
     {
-
-        $universities = University::all();
-        /*foreach ($universities as $university)
-        {
-            $var= $university->name ;
-        }*/
-        $response = [
-            'universities' => $universities
-        ];
+        $university=new University();
+        $response=$university->getBasicUniversitiesData();
         return response()->json($response,200);
     }
 

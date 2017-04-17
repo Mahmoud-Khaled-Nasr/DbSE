@@ -6,8 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class University extends Model
 {
-    public function getUniversity ($id){
 
+    public function getBasicUniversitiesData (){
+        $universities=University::all();
+        $faculties=new Faculty();
+
+        $response =array ();
+        $faculties =array ();
+        foreach ($universities as $university ){
+            $faculty_table=University::all()->find($university->id)->faculties;
+            foreach ($faculty_table as $f){
+                array_push($faculties,$f->fname);
+            }
+            array_push($response,['name'=>$university->name ,
+                'faculties'=>$faculties
+            ]);
+
+        }
+        return $response;
     }
 
     /**

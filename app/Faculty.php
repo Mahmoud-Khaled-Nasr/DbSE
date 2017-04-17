@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Faculty extends Model
 {
+
     /**
      * Get the university that owns the faculty.
      */
