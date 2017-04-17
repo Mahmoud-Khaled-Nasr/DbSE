@@ -26,4 +26,3 @@ Route::group(['prefix'=>'v1'],function(){
     Route::resource('university','UniversityController',['only'=>['show','index']]);
 } );
 
-//a change

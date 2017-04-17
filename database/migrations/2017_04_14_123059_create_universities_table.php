@@ -16,10 +16,16 @@ class CreateUniversitiesTable extends Migration
         Schema::create('universities', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            /*
-             * TODO complete the universities table fields
-             */
-            $table->string('name',20);
+            $table->string('name',40);
+            $table->string('president_name',30);
+            $table->string('past_presidents',255);
+            $table->string('url',255);
+            $table->string('fb_url',255);
+            $table->string('contacts',30);
+            $table->string('description',255);
+            $table->longText('uni_logo');
+            $table->double('x',20,15);
+            $table->double('y',20,15);
         });
     }
 
