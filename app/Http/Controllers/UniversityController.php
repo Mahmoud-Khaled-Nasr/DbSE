@@ -22,7 +22,7 @@ class UniversityController extends Controller
         $universities = University::all();
         /*foreach ($universities as $university)
         {
-            $university->faculties()->where('uni_id','=','id')->all();
+            $var= $university->name ;
         }*/
         $response = [
             'universities' => $universities
