@@ -16,13 +16,16 @@ class CreateFacultiesTable extends Migration
         Schema::create('faculties', function (Blueprint $table) {
             $table->increments('fid');
             $table->unsignedInteger('university_id');
+            $table->float('fees',6,2)->nullable();
             $table->timestamps();
             $table->string('fname',40);
             $table->string('fwebsite',255);
             $table->string('ffacebook_page',255);
             $table->string('fdescription',255);
             $table->string('departments',255);
-            $table->longText('flogo');
+            $table->longText('flogo')->nullable();
+            $table->longText('fpic1')->nullable();
+            $table->longText('fpic2')->nullable();
             $table->double('fx',20,15);
             $table->double('fy',20,15);
 

@@ -17,10 +17,21 @@ class CreateUniversitiesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name',40);
+            $table->string('city',20);
+            $table->string('type',15);
+
             $table->string('website_url',255);
             $table->string('facebook_page',255);
             $table->string('description',255);
-            $table->longText('logo');
+
+            //TODO add table for pictures
+            $table->longText('logo')->nullable();
+            $table->longText('pic1')->nullable();
+            $table->longText('pic2')->nullable();
+            $table->longText('pic3')->nullable();
+            $table->longText('pic4')->nullable();
+            $table->longText('pic5')->nullable();
+
             $table->double('x',20,15);
             $table->double('y',20,15);
 

@@ -16,6 +16,7 @@ class FacultyTableSeeder extends Seeder
             $table = new Faculty();
             $table->university_id = rand(0,40);
             $table->fname = str_random(10);
+            $table->fees = rand(100, 900) / 100;
             $table->fpresident_name = str_random(10);
             $table->fpast_presidents = str_random(10);
             $table->fwebsite = str_random(10);
@@ -24,6 +25,8 @@ class FacultyTableSeeder extends Seeder
             $table->fdescription = str_random(10);
             $table->departments = str_random(10);
             $table->flogo = str_random(10);
+            $table->fpic1 = str_random(10);
+            $table->fpic2 = str_random(10);
             $table->fx = rand(100, 900) / 100;
             $table->fy = rand(100, 900) / 100;
 
