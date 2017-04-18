@@ -37,10 +37,9 @@ class UniversityController extends Controller
         foreach ($faculties as $faculty){
             array_push($data,['id'=>$faculty->fid ,'name'=>$faculty->fname]);
         }
-        $response = [
-            'university' => $university,
-            'faculties' => $data
-        ];
+        $response = array();
+        array_push($response, ['university' => $university, 'faculties' => $data]);
+
         return response()->json($response,200);
     }
 }
