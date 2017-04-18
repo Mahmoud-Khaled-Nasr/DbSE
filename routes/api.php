@@ -17,16 +17,17 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
-Route::group(['prefix'=>'v1' ,'middleware' => 'JWT'],function(){
-    Route::resource('visitor',"VisitorController",['except'=>['create','index','edit']]);
-    Route::resource('pwso',"PWSOController",['except'=>['create','index','edit']]);
-    Route::resource('wso',"WSOController",['except'=>['create','index','edit']]);
+Route::group(['prefix'=>'v1'],function(){
+    Route::group(['middleware' =>'JWT'],function (){
+        Route::resource('visitor',"VisitorController",['except'=>['create','index','edit']]);
+        Route::resource('pwso',"PWSOController",['except'=>['create','index','edit']]);
+        Route::resource('wso',"WSOController",['except'=>['create','index','edit']]);
+        Route::resource('university','UniversityController',['only'=>['show','index']]);
+        Route::resource('faculty','FacultyController',['only'=>['show','index']]);
+    });
     Route::resource('emailverification','EmailVerificationController',['only'=>['store','update','destroy']]);
-    Route::resource('university','UniversityController',['only'=>['show','index']]);
-    Route::resource('faculty','FacultyController',['only'=>['show','index']]);
+    Route::post('signin',[
+        'uses'=>'SigninController@signin'
+    ]);
 } ) ;
-
-Route::post('/signin',[
-    'uses'=>'SigninController@signin'
-]);
 
