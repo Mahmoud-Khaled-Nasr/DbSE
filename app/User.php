@@ -10,7 +10,7 @@ class User extends Authenticatable
         $id=$row->id;
         $type=$row->type;
         if ($type=='VISITOR'){
-            $visitor=User::all()->find($id)->visitor->first()->id;
+            $visitor=User::all()->find($id)->first()->id;
             return $visitor;
         }elseif ($type=='WSO'){
             $wse=User::all()->find($id)->wso->first()->id;
