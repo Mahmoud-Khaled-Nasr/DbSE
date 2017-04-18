@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
-
 class SigninController extends Controller
 {
     /**
@@ -15,7 +12,6 @@ class SigninController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function signin(Request $request){
         $login=$request->login;
         $email=User::where('email','=',$login)->get();
@@ -26,12 +22,9 @@ class SigninController extends Controller
             $field='username';
         else
             return response()->json(['error' => 'user doesn\'t exist'], 401);
-
         $data=array( $field=> $login,'password'=> $request->password);
         try {
-            $token=JWTAuth::attempt($data);
             $token = JWTAuth::attempt($data);
-
             if (!$token ) {
                 return response()->json(['error' => 'wrong password'], 401);
             }
@@ -39,10 +32,8 @@ class SigninController extends Controller
             // something went wrong whilst attempting to encode the token
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-
         $type=User::getUserType($field,$login);
         $id=User::getUserID($field,$login);
-        //TODO send the id data from the right table according to the type
         return response()->json(compact('token','id','type'));
     }
 }
