@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Visitor;
 use Illuminate\Http\Request;
 
 class VisitorController extends Controller
@@ -15,7 +17,14 @@ class VisitorController extends Controller
      */
     public function store(Request $request)
     {
-
+        $id=$request->id;
+        if (User::isUserExist($id))
+            return response()->json(["error"=>'user doesn\'t esists',409]);
+        $visitor=new Visitor();
+        $visitor->name=$request->name;
+        $visitor->user_id=$id;
+        $visitor->save();
+        return response(["msg"=>"visitor created sucessfully"],200);
     }
 
     /**
@@ -26,7 +35,9 @@ class VisitorController extends Controller
      */
     public function show($id)
     {
-
+        if (! Visitor::isVisitorExists($id))
+            return response()->json(["error"=>"wrong id"],404);
+        return response()->json(Visitor::getVisitorProfile($id),200);
     }
 
     /**
@@ -38,7 +49,13 @@ class VisitorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $userid=$request->user_id;
+        if (! Visitor::isVisitorExists($id))
+            return response()->json(["error"=>"wrong visitor id"],404);
+        if (! User::isUserExist($userid))
+            return response()->json(["error"=>'user doesn\'t esists'],409);
+        Visitor::updateVisitorProfile($id,$request);
+        return response(["msg"=>"updated successfully"],200);
     }
 
     /**

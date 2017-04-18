@@ -46,6 +46,13 @@ class User extends Authenticatable
             return false;
     }
 
+    public static function isUserExist ($id){
+        if (count(User::all()->find($id)) != 0)
+            return true;
+        else
+            return false;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
