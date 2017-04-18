@@ -16,13 +16,12 @@ class CreateVisitorsTable extends Migration
         Schema::create('visitors', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-
             $table->string('name',40);
-            $table->string('username',20)->unique();
-            $table->string('email',20)->unique();
-            $table->string('password',100);
+            $table->unsignedInteger('user_id');
+        });
 
-            //$table->unique(['username','email']);
+        Schema::table('visitors', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
