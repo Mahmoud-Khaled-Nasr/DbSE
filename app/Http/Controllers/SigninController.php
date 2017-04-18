@@ -29,7 +29,6 @@ class SigninController extends Controller
 
         $data=array( $field=> $login,'password'=> $request->password);
         try {
-            $token=JWTAuth::attempt($data);
             $token = JWTAuth::attempt($data);
 
             if (!$token ) {
@@ -42,7 +41,6 @@ class SigninController extends Controller
 
         $type=User::getUserType($field,$login);
         $id=User::getUserID($field,$login);
-        //TODO send the id data from the right table according to the type
         return response()->json(compact('token','id','type'));
     }
 }
