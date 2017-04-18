@@ -11,12 +11,12 @@ class User extends Authenticatable
     use Notifiable;
 
     public static function getUserID ($datatype,$data){
-        $row=User::where($datatype,'=',$data)->first();
+        $row=User::where($datatype,'=',$data)->firstOrFail();
         return $row->id;
     }
 
     public static function getUserType ($datatype,$data){
-        $row=User::where($datatype,$data)->first();
+        $row=User::where($datatype,$data)->firstOrFail();
         return $row->type;
     }
 
