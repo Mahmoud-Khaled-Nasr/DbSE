@@ -21,7 +21,17 @@ class SigninController extends Controller
     }*/
 
     public function signin(Request $request){
-        $data=$request->only('email','password');
+
+        $email=User::where('email','=',$request->login)->get();
+        $username=User::where('username','=',$request->login)->get();
+        if (count($email)==1)
+            $field='email';
+        elseif (count($username)==1)
+            $field='username';
+        else
+            return response()->json(['error' => 'user doesn\'t exist'], 401);
+
+        $data=array( $field=> $request->login,'password'=> $request->password);
         //$data=array("email"=>User::all()->find(1)->email,"password"=>User::all()->find(1)->password);
         try {
             // attempt to verify the credentials and create a token for the user
@@ -29,7 +39,7 @@ class SigninController extends Controller
             $token = JWTAuth::attempt($data);
 
             if (!$token ) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
+                return response()->json(['error' => 'wrong password'], 401);
             }
         } catch (JWTException $e) {
             // something went wrong whilst attempting to encode the token
