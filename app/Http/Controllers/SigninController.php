@@ -15,15 +15,11 @@ class SigninController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /*public function show($id)
-    {
-        return "hi";
-    }*/
 
     public function signin(Request $request){
-
-        $email=User::where('email','=',$request->login)->get();
-        $username=User::where('username','=',$request->login)->get();
+        $login=$request->login;
+        $email=User::where('email','=',$login)->get();
+        $username=User::where('username','=',$login)->get();
         if (count($email)==1)
             $field='email';
         elseif (count($username)==1)
@@ -31,10 +27,8 @@ class SigninController extends Controller
         else
             return response()->json(['error' => 'user doesn\'t exist'], 401);
 
-        $data=array( $field=> $request->login,'password'=> $request->password);
-        //$data=array("email"=>User::all()->find(1)->email,"password"=>User::all()->find(1)->password);
+        $data=array( $field=> $login,'password'=> $request->password);
         try {
-            // attempt to verify the credentials and create a token for the user
             $token=JWTAuth::attempt($data);
             $token = JWTAuth::attempt($data);
 
@@ -46,7 +40,8 @@ class SigninController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        // all good so return the token
-        return response()->json(compact('token'));
+        $type=User::getUserType($field,$login);
+        $id=User::getUserID($field,$login);
+        return response()->json(compact('token','id','type'));
     }
 }

@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('username',30)->unique();
             $table->string('email',30)->unique();
             $table->string('password',100);
+            $table->enum('type',['VISITOR','WSO','PWSO']);
             $table->rememberToken();
             $table->timestamps();
         });
