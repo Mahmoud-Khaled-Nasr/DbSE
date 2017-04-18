@@ -6,7 +6,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     public static function getUserID ($datatype,$data){
-        $row=User::where($datatype,'=',$data)->first();
+        $row=User::where($datatype,'=',$data)->firstOrFail();
         $id=$row->id;
         $type=$row->type;
         if ($type=='VISITOR'){
@@ -21,7 +21,7 @@ class User extends Authenticatable
         }
     }
     public static function getUserType ($datatype,$data){
-        $row=User::where($datatype,$data)->first();
+        $row=User::where($datatype,$data)->firstOrFail();
         return $row->type;
     }
     /**
