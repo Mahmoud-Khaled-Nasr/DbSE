@@ -32,6 +32,7 @@ class CreateUniversitiesTable extends Migration
             $table->longText('pic4')->nullable();
             $table->longText('pic5')->nullable();
 
+            $table->string('location',100);
             $table->double('x',20,15);
             $table->double('y',20,15);
 
@@ -39,6 +40,7 @@ class CreateUniversitiesTable extends Migration
             $table->string('president_name',30);
             $table->string('past_presidents',255);
             $table->string('contacts',30);
+            $table->string('others',255)->nullable();
         });
     }
 
