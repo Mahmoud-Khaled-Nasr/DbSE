@@ -66,6 +66,6 @@ class VisitorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //TODO is this function is needed
     }
 }

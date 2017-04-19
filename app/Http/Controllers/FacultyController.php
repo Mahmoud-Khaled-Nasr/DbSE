@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Faculty;
 
 
-//TODO fix the class
+//TODO fix the class: return specific faculty data (name,photo) in index function
 class FacultyController extends Controller
 {
     /**
