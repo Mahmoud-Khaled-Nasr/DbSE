@@ -30,7 +30,7 @@ class SchoolController extends Controller
      */
     public function show($id)
     {
-        $school = School::all()->find($id);
+        $school = School::where('id','=',$id)->firstOrFail();
         $response = [
             'school' => $school,
         ];

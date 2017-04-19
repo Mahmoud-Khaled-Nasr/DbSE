@@ -31,7 +31,7 @@ class UniversityController extends Controller
      */
     public function show($id)
     {
-        $university = University::all()->find($id);
+        $university = University::where('id','=',$id)->firstOrFail();
         $faculties= Faculty::where('university_id','=',$id)->get();
         $data=array();
         foreach ($faculties as $faculty){

@@ -32,7 +32,7 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::all()->find($id);
+        $faculty = Faculty::where('fid','=',$id)->firstOrFail();
         $response = [
             'faculty' => $faculty,
         ];
