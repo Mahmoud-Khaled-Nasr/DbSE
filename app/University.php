@@ -9,18 +9,19 @@ class University extends Model
 
     public function getBasicUniversitiesData (){
         $universities=University::all();
-        $faculties=new Faculty();
+        //$faculties=new Faculty();
 
         $response =array ();
         $faculties =array ();
         foreach ($universities as $university ){
             $faculty_table=University::all()->find($university->id)->faculties;
             foreach ($faculty_table as $f){
-                array_push($faculties,$f->fname);
+                array_push($faculties,['name'=>$f->fname, 'id'=>$f->fid , 'logo'=>$f->flogo]);
             }
-            array_push($response,['name'=>$university->name ,
+            array_push($response,['name'=>$university->name , 'id'=>$university->id ,'logo'=>"String"/*$university->logo*/,
                 'faculties'=>$faculties
             ]);
+            $faculties=array();
 
         }
         return $response;
