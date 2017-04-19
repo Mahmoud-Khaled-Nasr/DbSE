@@ -24,6 +24,28 @@ class User extends Authenticatable
         $row=User::where($datatype,$data)->firstOrFail();
         return $row->type;
     }
+
+    public static function isEmailExist ($email){
+        if (count(User::where('email','=',$email)->get()) !=0)
+            return true;
+        else
+            return false;
+    }
+
+    public static function isUsernameExist ($username){
+        if (count(User::where('username',$username)->get()) !=0 )
+            return true;
+        else
+            return false;
+    }
+
+    public static function isUserExist ($id){
+        if (count(User::all()->find($id)) != 0)
+            return true;
+        else
+            return false;
+    }
+
     /**
      * The attributes that are mass assignable.
      *

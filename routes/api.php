@@ -26,9 +26,15 @@ Route::group(['prefix'=>'v1'],function(){
         Route::resource('faculty','FacultyController',['only'=>['show','index']]);
         Route::resource('school','SchoolController',['only'=>['show','index']]);
     });
-    Route::resource('emailverification','EmailVerificationController',['only'=>['store','update','destroy']]);
+    Route::resource('emailverificationn','EmailVerificationController',['only'=>['store','update','destroy']]);
+    Route::post('emailverification',[
+        'uses'=>'EmailVerificationController@verify'
+    ]);
     Route::post('signin',[
         'uses'=>'SigninController@signin'
+    ]);
+    Route::post('signup',[
+        'uses'=>'SignupController@signup'
     ]);
 } ) ;
 

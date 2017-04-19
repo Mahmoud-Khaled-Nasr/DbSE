@@ -9,8 +9,6 @@ class University extends Model
 
     public function getBasicUniversitiesData (){
         $universities=University::all();
-        //$faculties=new Faculty();
-
         $response =array ();
         $faculties =array ();
         foreach ($universities as $university ){
