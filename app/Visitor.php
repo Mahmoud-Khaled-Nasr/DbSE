@@ -15,12 +15,16 @@ class Visitor extends Model
     }
 
     public static function getVisitorProfile ($id){
-        return Visitor::all()->find($id)->user;;
+        $user= Visitor::all()->find($id)->user->toArray();
+        $visitor=Visitor::all()->find($id)->toArray();
+        $response= array("username"=>$user['username'],"email"=>$user['email'],"name"=>$visitor['name'],"gender"=>$visitor['gender']);
+        return $response;
     }
 
     public static function updateVisitorProfile ($id,$request){
         $visitor=Visitor::all()->find($id);
         $visitor->name=$request->name;
+        $visitor->gender=$request->gender;
         $visitor->user_id=$id;
         $visitor->save();
     }

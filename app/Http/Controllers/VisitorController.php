@@ -55,6 +55,7 @@ class VisitorController extends Controller
         if (! User::isUserExist($userid))
             return response()->json(["error"=>'user doesn\'t esists'],409);
         Visitor::updateVisitorProfile($id,$request);
+        //TODO update user function with validation
         return response(["msg"=>"updated successfully"],200);
     }
 

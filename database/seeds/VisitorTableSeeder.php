@@ -15,6 +15,7 @@ class VisitorTableSeeder extends Seeder
         $table=new Visitor();
         $table->name="mahmoud Khaled";
         $table->user_id=1;
+        $table->gender='MALE';
         $table->save();
     }
 }
