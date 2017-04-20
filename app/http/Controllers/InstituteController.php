@@ -14,10 +14,8 @@ class InstituteController extends Controller
      */
     public function index()
     {
-        $institutes = Institute::all();
-        $response = [
-            'institutes' => $institutes
-        ];
+        $institute = new Institute();
+        $response = $institute->getBasicInstitutesData();
         return response()->json($response,200);
     }
 
@@ -30,7 +28,7 @@ class InstituteController extends Controller
      */
     public function show($id)
     {
-        $institute = Institute::where('fid','=',$id)->firstOrFail();
+        $institute = Institute::where('id','=',$id)->firstOrFail();
         $response = [
             'institute' => $institute,
         ];
