@@ -30,6 +30,9 @@ Route::group(['prefix'=>'v1'],function(){
     Route::post('emailverification',[
         'uses'=>'EmailVerificationController@verify'
     ]);
+    Route::get('about',[
+        'uses'=>'DbseController@about'
+    ]);
     Route::post('signin',[
         'uses'=>'SigninController@signin'
     ]);
