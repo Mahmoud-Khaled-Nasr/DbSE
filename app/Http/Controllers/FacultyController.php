@@ -16,10 +16,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        $response = [
-            'faculties' => $faculties
-        ];
+        $faculty = new Faculty();
+        $response = $faculty->getBasicFacultiesData();
         return response()->json($response,200);
     }
 

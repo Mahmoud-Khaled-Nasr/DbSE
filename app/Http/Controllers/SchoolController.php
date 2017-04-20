@@ -14,10 +14,8 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $schools = School::all();
-        $response = [
-            'schools' => $schools
-        ];
+        $school = new School();
+        $response = $school->getBasicSchoolsData();
         return response()->json($response,200);
     }
 
