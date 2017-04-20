@@ -49,7 +49,8 @@ class SignupController extends Controller
     }
 
     public function verify(UserValidation $request){
-        $code=rand(111111,999999);
+        //$code=rand(111111,999999);
+        $code=11111;
         //TODO send an email from here
         return response()->json(['msg'=>'verification code was sent to the email','code'=>$code],200);
     }

@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Storage;
 class DbseController extends Controller
 {
     public function about(){
-
+        $string=json_decode(Storage::get ('dbse/about.txt'));
         //TODO add the description and website to a file
-        return response()->json(['description'=>'This is a simple description i will fill the real description later',
-            'website'=>'http://www.dbse.co/'],200);
+        return response()->json(['description'=>$string->description,
+            'website'=>$string->website],200);
     }
 }
