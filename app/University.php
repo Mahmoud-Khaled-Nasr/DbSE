@@ -16,7 +16,7 @@ class University extends Model
             foreach ($faculty_table as $f){
                 array_push($faculties,['name'=>$f->fname, 'id'=>$f->fid , 'logo'=>$f->flogo]);
             }
-            array_push($response,['name'=>$university->name , 'id'=>$university->id ,'logo'=>"String"/*$university->logo*/,
+            array_push($response,['name'=>$university->name , 'id'=>$university->id ,'logo'=>$university->logo,
                 'faculties'=>$faculties
             ]);
             $faculties=array();
