@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\School;
-class SchoolTableSeeder extends Seeder
+class SchoolsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
