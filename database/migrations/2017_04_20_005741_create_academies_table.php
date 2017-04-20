@@ -17,9 +17,9 @@ class CreateAcademiesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name',40);
-            $table->string('logo',50)->nullable();
-            $table->string('pic1',50)->nullable();
-            $table->string('pic2',50)->nullable();
+            $table->string('logo',255)->nullable();
+            $table->string('pic1',255)->nullable();
+            $table->string('pic2',255)->nullable();
             $table->string('description',255);
             $table->string('city',20);
             $table->string('contacts',30);

@@ -24,9 +24,9 @@ class CreateFacultiesTable extends Migration
             $table->string('ffacebook_page',255);
             $table->string('fdescription',255);
             $table->string('departments',255);
-            $table->string('flogo',50)->nullable();
-            $table->string('fpic1',50)->nullable();
-            $table->string('fpic2',50)->nullable();
+            $table->string('flogo',255)->nullable();
+            $table->string('fpic1',255)->nullable();
+            $table->string('fpic2',255)->nullable();
             $table->string('location',100);
             $table->double('fx',20,15);
             $table->double('fy',20,15);

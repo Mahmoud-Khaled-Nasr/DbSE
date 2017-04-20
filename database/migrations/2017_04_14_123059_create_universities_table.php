@@ -25,12 +25,12 @@ class CreateUniversitiesTable extends Migration
             $table->string('description',255);
 
             //TODO add table for pictures
-            $table->string('logo',50)->nullable();
-            $table->string('pic1',50)->nullable();
-            $table->string('pic2',50)->nullable();
-            $table->string('pic3',50)->nullable();
-            $table->string('pic4',50)->nullable();
-            $table->string('pic5',50)->nullable();
+            $table->string('logo',255)->nullable();
+            $table->string('pic1',255)->nullable();
+            $table->string('pic2',255)->nullable();
+            $table->string('pic3',255)->nullable();
+            $table->string('pic4',255)->nullable();
+            $table->string('pic5',255)->nullable();
 
             $table->string('location',100);
             $table->double('x',20,15);
