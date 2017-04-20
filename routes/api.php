@@ -25,7 +25,8 @@ Route::group(['prefix'=>'v1'],function(){
         Route::resource('university','UniversityController',['only'=>['show','index']]);
         Route::resource('faculty','FacultyController',['only'=>['show','index']]);
     });
-    Route::resource('emailverificationn','EmailVerificationController',['only'=>['store','update','destroy']]);
+    //Route::resource('emailverificationn','EmailVerificationController',['only'=>['store','update','destroy']]);
+
     Route::post('emailverification',[
         'uses'=>'EmailVerificationController@verify'
     ]);
@@ -35,5 +36,7 @@ Route::group(['prefix'=>'v1'],function(){
     Route::post('signup',[
         'uses'=>'SignupController@signup'
     ]);
+    Route::post('signupverify', [
+        'uses'=>'signupController@verify']);
 } ) ;
 

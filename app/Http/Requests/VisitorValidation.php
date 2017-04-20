@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\User;
 use App\Visitor;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\Rule;
 
 class VisitorValidation extends FormRequest
@@ -55,25 +56,20 @@ class VisitorValidation extends FormRequest
                 ];
             }
             break;
-
-
         }
         return $rule;
     }
 
     public function response(array $errors)
     {
-        /*$var=array();
-        foreach ($errors as $error){
-            array_push($var,$error);
-        }
-        $stop=0;*/
         return response()->json(["error"=>$errors],409);
     }
 
-    public function failedAuthorization (){
-        //TODO throw an exception here
-        return response()->json(["error"=>"unauthorizied action",422]);
-    }
+   /* public function failedAuthorization (){
+        //TODO throw an exception here or find another way
+        return new JsonResponse('error',422);
+        return $this->response(["error"]);
+        return response()->json(["error"=>"wrong id"],422);
+    }*/
 
 }
