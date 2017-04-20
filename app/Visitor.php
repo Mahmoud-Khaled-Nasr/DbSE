@@ -25,7 +25,6 @@ class Visitor extends Model
         $visitor=Visitor::all()->find($id);
         $visitor->name=$request->name;
         $visitor->gender=$request->gender;
-        $visitor->user_id=$id;
         $visitor->save();
     }
 

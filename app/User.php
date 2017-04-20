@@ -10,6 +10,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public static function updateUser ($id,$request){
+        $user=User::all()->find($id);
+        $user->username=$request->username;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->save();
+    }
+
     public static function getUserID ($datatype,$data){
         $row=User::where($datatype,'=',$data)->first();
         $id=$row->id;

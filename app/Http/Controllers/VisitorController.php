@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VisitorValidation;
 use App\User;
 use App\Visitor;
 use Illuminate\Http\Request;
@@ -47,15 +48,10 @@ class VisitorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VisitorValidation $request, $id)
     {
-        $userid=$request->user_id;
-        if (! Visitor::isVisitorExists($id))
-            return response()->json(["error"=>"wrong visitor id"],404);
-        if (! User::isUserExist($userid))
-            return response()->json(["error"=>'user doesn\'t esists'],409);
         Visitor::updateVisitorProfile($id,$request);
-        //TODO update user function with validation
+        User::updateUser(Visitor::all()->find($id)->user->id,$request);
         return response(["msg"=>"updated successfully"],200);
     }
 

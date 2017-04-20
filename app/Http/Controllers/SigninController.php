@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Visitor;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -35,12 +36,25 @@ class SigninController extends Controller
                 return response()->json(['error' => 'wrong password'], 401);
             }
         } catch (JWTException $e) {
-            // something went wrong whilst attempting to encode the token
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
         $type=User::getUserType($field,$login);
-        $id=User::getUserID($field,$login);
+        $userid=User::getUserID($field,$login);
+        switch ($type){
+            case "VISITOR":{
+                $id=User::all()->find($userid)->visitor->id;
+            }
+            break;
+            case "WSO":{
+                $id=User::all()->find($userid)->wso->id;
+            }
+                break;
+            case "PWSO":{
+                $id=User::all()->find($userid)->pwso->id;
+            }
+                break;
+        }
         return response()->json(compact('token','id','type'));
     }
 }
