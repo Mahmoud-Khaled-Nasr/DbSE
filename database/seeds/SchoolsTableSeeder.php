@@ -13,21 +13,18 @@ class SchoolsTableSeeder extends Seeder
     {
         for ($i=0;$i<100;$i++) {
             $table = new School();
-            $table->sname = str_random(10);
-            $table->city = str_random(10);
-            $table->sowner_name = str_random(10);
-            $table->swebsite = str_random(10);
-            $table->sfacebook_page = str_random(10);
-            $table->scontacts = str_random(10);
+            $table->name = str_random(10);
+            $table->location = str_random(50);
+            $table->website = str_random(10);
+            $table->facebook_page = str_random(10);
+            $table->contacts = str_random(10);
             $table->fees = rand(100, 900) / 100;
             $table->description = str_random(10);
-            $table->stages = str_random(10);
+            $table->others = str_random(50);
             $table->classification = str_random(10);
-            $table->slogo = str_random(10);
-            $table->spic1 = str_random(10);
-            $table->spic2 = str_random(10);
-            $table->sx = rand(100, 900) / 100;
-            $table->sy = rand(100, 900) / 100;
+            $table->logo = str_random(10);
+            $table->x = rand(100, 900) / 100;
+            $table->y = rand(100, 900) / 100;
 
             $table->save();
         }
