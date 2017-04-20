@@ -23,12 +23,15 @@ class FacultyTableSeeder extends Seeder
             $table->ffacebook_page = str_random(10);
             $table->fcontacts = str_random(10);
             $table->fdescription = str_random(10);
+            $table->city=str_random(10);
             $table->departments = str_random(10);
             $table->flogo = str_random(10);
             $table->fpic1 = str_random(10);
             $table->fpic2 = str_random(10);
             $table->fx = rand(100, 900) / 100;
             $table->fy = rand(100, 900) / 100;
+            $table->location=str_random(50);
+            $table->others=str_random(50);
 
             $table->save();
         }
