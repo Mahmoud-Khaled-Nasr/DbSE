@@ -37,8 +37,10 @@ class VisitorController extends Controller
     public function show($id)
     {
         if (! Visitor::isVisitorExists($id))
-            return response()->json(["error"=>"wrong id"],404);
-        return response()->json(Visitor::getVisitorProfile($id),200);
+            return response()->json(["error"=>"wrong id"],409);
+        $res= array_merge(Visitor::getVisitorProfile($id),
+            User::getUserProfile(Visitor::all()->find($id)->user->id));
+        return response()->json($res,200);
     }
 
     /**

@@ -10,6 +10,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public static function getUserProfile ($id){
+        return User::all()->find($id)->toArray();
+    }
+
     public static function updateUser ($id,$request){
         $user=User::all()->find($id);
         $user->username=$request->username;
