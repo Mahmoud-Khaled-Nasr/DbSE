@@ -14,7 +14,7 @@ class University extends Model
         foreach ($universities as $university ){
             $faculty_table=University::all()->find($university->id)->faculties;
             foreach ($faculty_table as $f){
-                array_push($faculties,['name'=>$f->fname, 'id'=>$f->fid , 'logo'=>$f->flogo]);
+                array_push($faculties,['name'=>$f->name, 'id'=>$f->id , 'logo'=>$f->logo]);
             }
             array_push($response,['name'=>$university->name , 'id'=>$university->id ,'logo'=>$university->logo,
                 'faculties'=>$faculties

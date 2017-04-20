@@ -29,9 +29,9 @@ class SchoolController extends Controller
     public function show($id)
     {
         $school = School::where('id','=',$id)->firstOrFail();
-        $response = [
+        $response = [[
             'school' => $school,
-        ];
+        ]];
         return response()->json($response,200);
     }
 

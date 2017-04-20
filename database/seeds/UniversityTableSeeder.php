@@ -32,6 +32,7 @@ class UniversityTableSeeder extends Seeder
             $table->location= str_random(50);
             $table->x=rand(100,900)/100 ;
             $table->y=rand(100,900)/100 ;
+            $table->rank=str_random(20);
             $table->others=str_random(100);
             $table->save();
         }

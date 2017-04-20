@@ -12,7 +12,7 @@ class Faculty extends Model
         $faculties=Faculty::all();
         $response =array();
         foreach ($faculties as $faculty ){
-            array_push($response,['name'=>$faculty->fname , 'id'=>$faculty->fid ,'logo'=>$faculty->flogo]);
+            array_push($response,['name'=>$faculty->name , 'id'=>$faculty->id ,'logo'=>$faculty->logo]);
         }
         return $response;
     }

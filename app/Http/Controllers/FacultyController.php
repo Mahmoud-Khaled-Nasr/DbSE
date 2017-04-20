@@ -30,10 +30,10 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculty = Faculty::where('fid','=',$id)->firstOrFail();
-        $response = [
+        $faculty = Faculty::where('id','=',$id)->firstOrFail();
+        $response = [[
             'faculty' => $faculty,
-        ];
+        ]];
         return response()->json($response,200);
     }
 

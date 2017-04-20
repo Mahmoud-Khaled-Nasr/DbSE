@@ -14,7 +14,7 @@ class Academy extends Model
         foreach ($academies as $academy ){
             $acadfaculty_table=Academy::all()->find($academy->id)->acadfaculties;
             foreach ($acadfaculty_table as $f){
-                array_push($acadfaculties,['name'=>$f->fname, 'id'=>$f->fid , 'logo'=>$f->flogo]);
+                array_push($acadfaculties,['name'=>$f->name, 'id'=>$f->id , 'logo'=>$f->logo]);
             }
             array_push($response,['name'=>$academy->name , 'id'=>$academy->id ,'logo'=>$academy->logo ,
                 'faculties'=>$acadfaculties

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Institute;
 use Illuminate\Http\Request;
+use App\Acadfaculty;
 
-class InstituteController extends Controller
+class AcadfacultyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class InstituteController extends Controller
      */
     public function index()
     {
-        $institute = new Institute();
-        $response = $institute->getBasicInstitutesData();
+        $acadfaculty = new Acadfaculty();
+        $response = $acadfaculty->getBasicAcadfacultiesData();
         return response()->json($response,200);
     }
 
@@ -28,11 +28,10 @@ class InstituteController extends Controller
      */
     public function show($id)
     {
-        $institute = Institute::where('id','=',$id)->firstOrFail();
+        $acadfaculty = Acadfaculty::where('id','=',$id)->firstOrFail();
         $response = [[
-            'institute' => $institute,
+            'faculty' => $acadfaculty,
         ]];
         return response()->json($response,200);
     }
-
 }

@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Faculty;
+use App\Acadfaculty;
 
-class FacultyTableSeeder extends Seeder
+class AcadfacultyTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,8 @@ class FacultyTableSeeder extends Seeder
     public function run()
     {
         for ($i=0;$i<100;$i++) {
-            $table = new Faculty();
-            $table->university_id = rand(0,40);
+            $table = new Acadfaculty();
+            $table->academy_id = rand(0,40);
             $table->name = str_random(10);
             $table->fees = rand(100, 900) / 100;
             $table->president_name = str_random(10);

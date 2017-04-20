@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUniversitiesTable extends Migration
+class CreateAcadfacultiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,35 +13,31 @@ class CreateUniversitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('universities', function (Blueprint $table) {
+        Schema::create('acadfaculties', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('academy_id');
+            $table->float('fees',6,2)->nullable();
             $table->timestamps();
             $table->string('name',40);
             $table->string('city',20);
-            $table->string('type',15);
-
-            $table->string('website_url',255);
+            $table->string('website',255);
             $table->string('facebook_page',255);
             $table->string('description',255);
-
-            //TODO add table for pictures
+            $table->string('departments',255);
             $table->string('logo',255)->nullable();
             $table->string('pic1',255)->nullable();
             $table->string('pic2',255)->nullable();
-            $table->string('pic3',255)->nullable();
-            $table->string('pic4',255)->nullable();
-            $table->string('pic5',255)->nullable();
-
             $table->string('location',100);
             $table->double('x',20,15);
             $table->double('y',20,15);
-
-            //TODO put them in another tables with forgien keys
             $table->string('president_name',30);
             $table->string('past_presidents',255);
             $table->string('contacts',30);
-            $table->string('rank',255);
             $table->string('others',255)->nullable();
+        });
+
+        Schema::table('acadfaculties', function(Blueprint $table) {
+            $table->foreign('academy_id')->references('id')->on('academies')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -52,6 +48,6 @@ class CreateUniversitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('universities');
+        Schema::dropIfExists('acadfaculties');
     }
 }

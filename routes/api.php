@@ -27,6 +27,7 @@ Route::group(['prefix'=>'v1'],function(){
         Route::resource('school','SchoolController',['only'=>['show','index']]);
         Route::resource('institute','InstituteController',['only'=>['show','index']]);
         Route::resource('academy','AcademyController',['only'=>['show','index']]);
+        Route::resource('acadfaculty','AcadfacultyController',['only'=>['show','index']]);
     });
     Route::resource('emailverificationn','EmailVerificationController',['only'=>['store','update','destroy']]);
     Route::post('emailverification',[
