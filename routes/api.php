@@ -28,9 +28,6 @@ Route::group(['prefix'=>'v1'],function(){
     });
     //Route::resource('emailverificationn','EmailVerificationController',['only'=>['store','update','destroy']]);
 
-    Route::post('emailverification',[
-        'uses'=>'EmailVerificationController@verify'
-    ]);
     Route::get('about',[
         'uses'=>'DbseController@about'
     ]);
@@ -46,8 +43,6 @@ Route::group(['prefix'=>'v1'],function(){
     Route::post('forgetpassword',[
         'uses'=>'ForgetPasswordController@getNewPassword'
     ]);
-    Route::post('forgetpasswordverify',[
-        'uses'=>'ForgetPasswordController@verify'
-    ]);
+
 } ) ;
 

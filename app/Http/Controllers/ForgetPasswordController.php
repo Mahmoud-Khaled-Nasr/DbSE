@@ -8,9 +8,6 @@ use App\Http\Requests\ForgetPasswordValidation;
 
 class ForgetPasswordController extends Controller
 {
-    public function verify(ForgetPasswordValidation $request){
-        return response()->json(['msg'=>'the email is valid']);
-    }
 
     public function getNewPassword (ForgetPasswordValidation $request){
         $password=str_random(9);
