@@ -16,21 +16,18 @@ class CreateSchoolsTable extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('sname',40);
-            $table->string('city',40);
-            $table->string('sowner_name',30);
-            $table->string('swebsite',255);
-            $table->string('sfacebook_page',255);
-            $table->string('scontacts',30);
-            $table->float('fees',6,2)->nullable();
+            $table->string('name',40);
+            $table->string('logo',255)->nullable();
+            $table->string('location',100);
+            $table->string('contacts',30);
+            $table->string('website',255);
+            $table->string('facebook_page',255);
             $table->string('description',255);
-            $table->string('stages',255);
             $table->string('classification',100);
-            $table->longText('slogo')->nullable();
-            $table->longText('spic1')->nullable();
-            $table->longText('spic2')->nullable();
-            $table->double('sx',20,15);
-            $table->double('sy',20,15);
+            $table->float('fees',6,2)->nullable();
+            $table->double('x',20,15);
+            $table->double('y',20,15);
+            $table->string('others',255);
 
         });
     }

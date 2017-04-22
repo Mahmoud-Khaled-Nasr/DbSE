@@ -5,13 +5,19 @@ use App\Visitor;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+
+/**
+ * Class SigninController
+ * @package App\Http\Controllers
+ */
 class SigninController extends Controller
 {
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Request $request
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function signin(Request $request){
         $login=$request->login;

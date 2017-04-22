@@ -23,14 +23,17 @@ class UniversityTableSeeder extends Seeder
             $table->facebook_page= str_random(255);
             $table->contacts= str_random(30);
             $table->description= str_random(255);
-            $table->logo= str_random(255);
-            $table->pic1= str_random(255);
-            $table->pic2= str_random(255);
-            $table->pic3= str_random(255);
-            $table->pic4= str_random(255);
-            $table->pic5= str_random(255);
+            $table->logo= str_random(20);
+            $table->pic1= str_random(20);
+            $table->pic2= str_random(20);
+            $table->pic3= str_random(20);
+            $table->pic4= str_random(20);
+            $table->pic5= str_random(20);
+            $table->location= str_random(50);
             $table->x=rand(100,900)/100 ;
             $table->y=rand(100,900)/100 ;
+            $table->rank=str_random(20);
+            $table->others=str_random(100);
             $table->save();
         }
     }

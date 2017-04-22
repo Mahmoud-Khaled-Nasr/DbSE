@@ -14,24 +14,26 @@ class CreateFacultiesTable extends Migration
     public function up()
     {
         Schema::create('faculties', function (Blueprint $table) {
-            $table->increments('fid');
+            $table->increments('id');
             $table->unsignedInteger('university_id');
             $table->float('fees',6,2)->nullable();
             $table->timestamps();
-            $table->string('fname',40);
-            $table->string('fwebsite',255);
-            $table->string('ffacebook_page',255);
-            $table->string('fdescription',255);
+            $table->string('name',40);
+            $table->string('city',20);
+            $table->string('website',255);
+            $table->string('facebook_page',255);
+            $table->string('description',255);
             $table->string('departments',255);
-            $table->longText('flogo')->nullable();
-            $table->longText('fpic1')->nullable();
-            $table->longText('fpic2')->nullable();
-            $table->double('fx',20,15);
-            $table->double('fy',20,15);
-
-            $table->string('fpresident_name',30);
-            $table->string('fpast_presidents',255);
-            $table->string('fcontacts',30);
+            $table->string('logo',255)->nullable();
+            $table->string('pic1',255)->nullable();
+            $table->string('pic2',255)->nullable();
+            $table->string('location',100);
+            $table->double('x',20,15);
+            $table->double('y',20,15);
+            $table->string('president_name',30);
+            $table->string('past_presidents',255);
+            $table->string('contacts',30);
+            $table->string('others',255)->nullable();
         });
 
         Schema::table('faculties', function(Blueprint $table) {
