@@ -18,26 +18,14 @@ class User extends Authenticatable
         $user=User::all()->find($id);
         $user->username=$request->username;
         $user->email=$request->email;
-        if ($request->password!="")
+        if ($request->password != "")
             $user->password=bcrypt($request->password);
         $user->save();
     }
 
     public static function getUserID ($datatype,$data){
-        $row=User::where($datatype,'=',$data)->first();
-        $id=$row->id;
-        $type=$row->type;
-        if ($type=='VISITOR'){
-            $visitor=User::all()->find($id)->visitor->first()->id;
-            return $visitor;
-        }elseif ($type=='WSO'){
-            $wse=User::all()->find($id)->wso->first()->id;
-            return $wse[0]->id;
-        }else{
-            $pwso=User::all()->find($id)->pwso->first()->id;
-            return $pwso[0]->id;
-        }
-
+        $row=User::all()->where($datatype,'=',$data)->first();
+        return $row->id;
     }
 
     public static function getUserType ($datatype,$data){
