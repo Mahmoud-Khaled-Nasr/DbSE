@@ -16,8 +16,9 @@ class CreateVisitorsTable extends Migration
         Schema::create('visitors', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('name',40);
             $table->unsignedInteger('user_id');
+            $table->string('name',40);
+            $table->enum('gender',['MALE','FEMALE']);
         });
 
         Schema::table('visitors', function(Blueprint $table) {

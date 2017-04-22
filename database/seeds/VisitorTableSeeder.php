@@ -13,8 +13,14 @@ class VisitorTableSeeder extends Seeder
     public function run()
     {
         $table=new Visitor();
+        $table->name="amir farag";
+        $table->user_id=2;
+        $table->gender='MALE';
+        $table->save();
+        $table=new Visitor();
         $table->name="mahmoud Khaled";
         $table->user_id=1;
+        $table->gender='MALE';
         $table->save();
     }
 }
