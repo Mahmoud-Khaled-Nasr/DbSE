@@ -178,7 +178,10 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //jwt authentication
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+
+        //doc generator
+        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
     ],
 
