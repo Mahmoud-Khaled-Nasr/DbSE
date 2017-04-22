@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class InstituteController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
+     * Get all Institutes.
+     *List has Institutes Name, ID, Logo, Departments.
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -21,8 +21,8 @@ class InstituteController extends Controller
 
 
     /**
-     * Display the specified resource.
-     *
+     * Get Specific Institute by ID.
+     *Each Institute has name, description, city, contacts, website, facebook_page, fees, location, and departments.
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

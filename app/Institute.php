@@ -11,7 +11,7 @@ class Institute extends Model
         $institutes=Institute::all();
         $response =array();
         foreach ($institutes as $institute ){
-            array_push($response,['name'=>$institute->name , 'id'=>$institute->id]);
+            array_push($response,['name'=>$institute->name , 'id'=>$institute->id, 'departments'=>$institute->departments]);
         }
         return $response;
     }

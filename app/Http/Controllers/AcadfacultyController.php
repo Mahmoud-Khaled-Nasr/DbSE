@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Acadfaculty;
 
+/**
+ * Class AcadfacultyController
+ * @package App\Http\Controllers
+ */
 class AcadfacultyController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
+     * Get all Academies Faculties.
+     *The List consists of Faculties Name, ID, Logo.
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -21,8 +25,8 @@ class AcadfacultyController extends Controller
 
 
     /**
-     * Display the specified resource.
-     *
+     * Get Specific Academy Faculty by ID.
+     *Each Faculty has name, logo, pictures, description, city, contacts, website, facebook_page, fees, location, and departments.
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +34,7 @@ class AcadfacultyController extends Controller
     {
         $acadfaculty = Acadfaculty::where('id','=',$id)->firstOrFail();
         $response = [[
-            'faculty' => $acadfaculty,
+            'acadfaculty' => $acadfaculty,
         ]];
         return response()->json($response,200);
     }

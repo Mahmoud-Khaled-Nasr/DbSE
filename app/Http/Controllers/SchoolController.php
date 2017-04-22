@@ -21,8 +21,8 @@ class SchoolController extends Controller
 
 
     /**
-     * Display the specified resource.
-     *
+     * Get Specific School by ID.
+     *Each School has name, logo, classification(languages, international, etc), website, facebook_page, city, contacts, fees, location, and description.
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
