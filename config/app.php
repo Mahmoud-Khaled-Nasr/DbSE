@@ -180,9 +180,6 @@ return [
         //jwt authentication
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
-        //doc generator
-        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
-
     ],
 
     /*
