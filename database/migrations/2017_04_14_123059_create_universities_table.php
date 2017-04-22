@@ -25,13 +25,14 @@ class CreateUniversitiesTable extends Migration
             $table->string('description',255);
 
             //TODO add table for pictures
-            $table->longText('logo')->nullable();
-            $table->longText('pic1')->nullable();
-            $table->longText('pic2')->nullable();
-            $table->longText('pic3')->nullable();
-            $table->longText('pic4')->nullable();
-            $table->longText('pic5')->nullable();
+            $table->string('logo',255)->nullable();
+            $table->string('pic1',255)->nullable();
+            $table->string('pic2',255)->nullable();
+            $table->string('pic3',255)->nullable();
+            $table->string('pic4',255)->nullable();
+            $table->string('pic5',255)->nullable();
 
+            $table->string('location',100);
             $table->double('x',20,15);
             $table->double('y',20,15);
 
@@ -39,6 +40,8 @@ class CreateUniversitiesTable extends Migration
             $table->string('president_name',30);
             $table->string('past_presidents',255);
             $table->string('contacts',30);
+            $table->string('rank',255);
+            $table->string('others',255)->nullable();
         });
     }
 

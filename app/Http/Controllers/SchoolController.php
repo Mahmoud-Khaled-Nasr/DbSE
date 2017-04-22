@@ -14,26 +14,24 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $schools = School::all();
-        $response = [
-            'schools' => $schools
-        ];
+        $school = new School();
+        $response = $school->getBasicSchoolsData();
         return response()->json($response,200);
     }
 
 
     /**
-     * Display the specified resource.
-     *
+     * Get Specific School by ID.
+     *Each School has name, logo, classification(languages, international, etc), website, facebook_page, city, contacts, fees, location, and description.
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $school = School::all()->find($id);
-        $response = [
+        $school = School::where('id','=',$id)->firstOrFail();
+        $response = [[
             'school' => $school,
-        ];
+        ]];
         return response()->json($response,200);
     }
 

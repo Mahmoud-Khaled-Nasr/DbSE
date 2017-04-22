@@ -162,6 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -179,9 +180,6 @@ return [
 
         //jwt authentication
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
-
-        //doc generator
-        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
     ],
 
