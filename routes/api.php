@@ -40,6 +40,13 @@ Route::group(['prefix'=>'v1'],function(){
         'uses'=>'SignupController@signup'
     ]);
     Route::post('signupverify', [
-        'uses'=>'signupController@verify']);
+        'uses'=>'signupController@verify'
+    ]);
+    Route::post('forgetpassword',[
+        'uses'=>'ForgetPasswordController@getNewPassword'
+    ]);
+    Route::post('forgetpasswordverify',[
+        'uses'=>'ForgetPasswordController@verify'
+    ]);
 } ) ;
 
