@@ -18,9 +18,9 @@ class CreateFacultiesTable extends Migration
             $table->unsignedInteger('university_id');
             $table->float('fees',6,2)->nullable();
             $table->timestamps();
-            $table->string('name',40);
-            $table->string('city',20);
-            $table->string('website',255);
+            $table->string('name',100);
+            $table->string('city',60);
+            $table->string('website_url',255);
             $table->string('facebook_page',255);
             $table->string('description',255);
             $table->string('departments',255);
@@ -32,7 +32,7 @@ class CreateFacultiesTable extends Migration
             $table->double('y',20,15);
             $table->string('president_name',30);
             $table->string('past_presidents',255);
-            $table->string('contacts',30);
+            $table->string('contacts',255);
             $table->string('others',255)->nullable();
         });
 

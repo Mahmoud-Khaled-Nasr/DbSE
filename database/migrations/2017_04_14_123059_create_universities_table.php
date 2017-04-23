@@ -17,7 +17,7 @@ class CreateUniversitiesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name',40);
-            $table->string('city',20);
+            $table->string('city',60);
             $table->string('type',15);
 
             $table->string('website_url',255);
@@ -39,7 +39,7 @@ class CreateUniversitiesTable extends Migration
             //TODO put them in another tables with forgien keys
             $table->string('president_name',30);
             $table->string('past_presidents',255);
-            $table->string('contacts',30);
+            $table->string('contacts',255);
             $table->string('rank',255);
             $table->string('others',255)->nullable();
         });

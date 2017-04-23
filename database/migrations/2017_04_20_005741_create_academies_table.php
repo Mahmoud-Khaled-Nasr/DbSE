@@ -16,13 +16,13 @@ class CreateAcademiesTable extends Migration
         Schema::create('academies', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('name',40);
+            $table->string('name',60);
             $table->string('logo',255)->nullable();
             $table->string('pic1',255)->nullable();
             $table->string('pic2',255)->nullable();
             $table->string('description',255);
-            $table->string('city',20);
-            $table->string('contacts',30);
+            $table->string('city',60);
+            $table->string('contacts',255);
             $table->string('website_url',255);
             $table->string('facebook_page',255);
             $table->string('location',100);

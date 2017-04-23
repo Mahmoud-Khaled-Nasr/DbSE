@@ -11,18 +11,25 @@ class AcademyTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker=Faker\Factory::create();
         for ($i=0;$i<20;$i++){
             $table=new Academy();
-            $table->name= str_random(10);
-            $table->city= str_random(10);
-            $table->website_url= str_random(255);
-            $table->facebook_page= str_random(255);
-            $table->contacts= str_random(30);
-            $table->description= str_random(255);
+            $city=$faker->unique()->city;
+            $table->name= $city.' academy';
+            $table->city= $city;
+            $table->website_url= $faker->url;
+            $table->facebook_page= $faker->url;
+            $temp=rand(1,3);
+            $numbers=$faker->phoneNumber;
+            for ($j=0;$j<$temp;$j++){
+                $numbers=$numbers.'/'.$faker->phoneNumber;
+            }
+            $table->contacts= $numbers;
+            $table->description= $faker->realText(200);
             $table->logo= str_random(20);
             $table->pic1= str_random(20);
             $table->pic2= str_random(20);
-            $table->location= str_random(50);
+            $table->location= $faker->address;
             $table->x=rand(100,900)/100 ;
             $table->y=rand(100,900)/100 ;
             $table->save();

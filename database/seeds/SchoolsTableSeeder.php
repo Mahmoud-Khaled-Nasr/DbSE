@@ -11,15 +11,21 @@ class SchoolsTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker=Faker\Factory::create();
         for ($i=0;$i<100;$i++) {
             $table = new School();
-            $table->name = str_random(10);
-            $table->location = str_random(50);
-            $table->website = str_random(10);
-            $table->facebook_page = str_random(10);
-            $table->contacts = str_random(10);
+            $table->name = $faker->firstName.' school';
+            $table->location = $faker->address;
+            $table->website_url = $faker->url;
+            $table->facebook_page = $faker->url;
+            $temp=rand(1,3);
+            $numbers=$faker->phoneNumber;
+            for ($j=0;$j<$temp;$j++){
+                $numbers=$numbers.'/'.$faker->phoneNumber;
+            }
+            $table->contacts= $numbers;
             $table->fees = rand(100, 900) / 100;
-            $table->description = str_random(10);
+            $table->description= $faker->realText(200);
             $table->others = str_random(50);
             $table->classification = str_random(10);
             $table->logo = str_random(10);
