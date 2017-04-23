@@ -1,0 +1,4 @@
+{"description":"DbSE is a platform to provide necessary data about universities, schools and workspaces",
+"website":"http://www.dbse.co",
+"contacts":[{"email":""},{"phone":""}]
+}
