@@ -24,10 +24,14 @@ Route::group(['prefix'=>'v1'],function(){
         Route::resource('wso',"WSOController",['except'=>['create','index','edit']]);
         Route::resource('university','UniversityController',['only'=>['show','index']]);
         Route::resource('faculty','FacultyController',['only'=>['show','index']]);
-        Route::resource('school','SchoolController',['only'=>['show','index']]);
+        Route::resource('school','SchoolController',['only'=>['show']]);
         Route::resource('institute','InstituteController',['only'=>['show','index']]);
         Route::resource('academy','AcademyController',['only'=>['show','index']]);
         Route::resource('acadfaculty','AcadfacultyController',['only'=>['show','index']]);
+        Route::get('schoollocation/{city}', [
+            'uses' => 'SchoolController@showschools']);
+        Route::get('schoollocation', [
+            'uses' => 'SchoolController@showcities']);
     });
     //Route::resource('emailverificationn','EmailVerificationController',['only'=>['store','update','destroy']]);
 
