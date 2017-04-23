@@ -15,6 +15,7 @@ class SchoolsTableSeeder extends Seeder
             $table = new School();
             $table->name = str_random(10);
             $table->location = str_random(50);
+            $table->city= 'toooot';
             $table->website = str_random(10);
             $table->facebook_page = str_random(10);
             $table->contacts = str_random(10);

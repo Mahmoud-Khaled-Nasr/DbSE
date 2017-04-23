@@ -4,18 +4,25 @@ namespace App\Http\Controllers;
 
 use App\School;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
+/**
+ * Class SchoolController
+ * @package App\Http\Controllers
+ */
 class SchoolController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
+     * @param string $city
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showschools($city)
     {
-        $school = new School();
-        $response = $school->getBasicSchoolsData();
+        $schools = School::all()->where('city','=',$city);
+        $response = array();
+        foreach ($schools as $school ){
+        array_push($response,['id'=>$school->id , 'name'=>$school->name ,'logo'=>$school->logo]);
+    }
         return response()->json($response,200);
     }
 
@@ -29,9 +36,19 @@ class SchoolController extends Controller
     public function show($id)
     {
         $school = School::where('id','=',$id)->firstOrFail();
-        $response = [[
+        $response = [
             'school' => $school,
-        ]];
+        ];
+        return response()->json($response,200);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function ShowCities()
+    {
+        $cities = DB::select('SELECT DISTINCT city FROM schools;');
+        $response = $cities;
         return response()->json($response,200);
     }
 
