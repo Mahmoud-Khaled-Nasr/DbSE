@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
+use View;
 use App\User;
 use App\Visitor;
 use Illuminate\Http\Request;
@@ -52,9 +54,12 @@ class SignupController extends Controller
         $code=rand(111111,999999);
         //TODO send an email from here
 
-        $row=User::all()->where('email','=',$request->email)->first();
+       /* $row=User::all()->where('email','=',$request->email)->first();
         $id=$row->id;
         $user=User::all()->find($id);
+       */
+       $email=$request->email;
+       $username=$request->username;
 
         $smtpAddress = 'smtp.gmail.com';
         $port = 465;
@@ -79,7 +84,7 @@ class SignupController extends Controller
         // Send email
         $message = \Swift_Message::newInstance('DbSE app Verification step')
             ->setFrom(['no-reply@dbse.com' => 'dbse team'])
-            ->setTo([$request->email => $user->username])
+            ->setTo([$email => $username])
             // If you want plain text instead, remove the second paramter of setBody
             ->setBody($html, 'text/html');
 
