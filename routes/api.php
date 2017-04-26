@@ -33,8 +33,6 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('schoollocation', [
             'uses' => 'SchoolController@showcities']);
     });
-    //Route::resource('emailverificationn','EmailVerificationController',['only'=>['store','update','destroy']]);
-
     Route::get('about',[
         'uses'=>'DbseController@about'
     ]);
