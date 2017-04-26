@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
+use View;
 use App\User;
 use App\Visitor;
 use Illuminate\Http\Request;
@@ -49,9 +51,47 @@ class SignupController extends Controller
     }
 
     public function verify(UserValidation $request){
-        //$code=rand(111111,999999);
-        $code=11111;
+        $code=rand(111111,999999);
         //TODO send an email from here
-        return response()->json(['msg'=>'verification code was sent to the email','code'=>$code],200);
+
+       /* $row=User::all()->where('email','=',$request->email)->first();
+        $id=$row->id;
+        $user=User::all()->find($id);
+       */
+       $email=$request->email;
+       $username=$request->username;
+
+        $smtpAddress = 'smtp.gmail.com';
+        $port = 465;
+        $encryption = 'ssl';
+        $yourEmail = 'dbseteam@gmail.com';
+        $yourPassword = 'Asd123456789';
+
+        // Prepare transport
+        $transport = \Swift_SmtpTransport::newInstance($smtpAddress, $port, $encryption)
+            ->setUsername($yourEmail)
+            ->setPassword($yourPassword);
+        $mailer = \Swift_Mailer::newInstance($transport);
+
+
+        // Prepare content
+        $view = View::make('email.confirmation', [
+            'message' => $code
+        ]);
+
+        $html = $view->render();
+
+        // Send email
+        $message = \Swift_Message::newInstance('DbSE app Verification step')
+            ->setFrom(['no-reply@dbse.com' => 'dbse team'])
+            ->setTo([$email => $username])
+            // If you want plain text instead, remove the second paramter of setBody
+            ->setBody($html, 'text/html');
+
+        if($mailer->send($message)){
+            return response()->json(['msg'=>'verification code was sent to the email','code'=>$code],200);
+        }
+
+        return response()->json(['error'=>'this email is not correct'],200);
     }
 }
