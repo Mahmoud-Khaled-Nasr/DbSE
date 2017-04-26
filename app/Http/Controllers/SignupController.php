@@ -47,17 +47,13 @@ class SignupController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-        return response()->json(['msg'=>'regestered successfully','id'=>$id,'token'=>$token],200);
+        return response()->json(['msg'=>'registered successfully','id'=>$id,'token'=>$token],200);
     }
 
     public function verify(UserValidation $request){
         $code=rand(111111,999999);
         //TODO send an email from here
 
-       /* $row=User::all()->where('email','=',$request->email)->first();
-        $id=$row->id;
-        $user=User::all()->find($id);
-       */
        $email=$request->email;
        $username=$request->username;
 
