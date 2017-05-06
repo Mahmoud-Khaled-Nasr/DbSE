@@ -2,17 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
+use App\PWSO;
+use App\Mailer;
 use View;
 use App\User;
 use App\Visitor;
-use Illuminate\Http\Request;
 use App\Http\Requests\UserValidation;
 use App\Http\Requests\SignupValidation;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
+/**
+ * Class SignupController
+ * @package App\Http\Controllers
+ * @inherit App\Http\Controller
+ */
 class SignupController extends Controller
 {
+    /**
+     * Creates a new user and fill proper tables in the database
+     *
+     * The new user credentials are inserted into the user table and according to the
+     * type of user(VISITOR,WSO,PWSO) the table is filled with the extra data.
+     *
+     * @param SignupValidation $request
+     * @return \Illuminate\Http\JsonResponse
+     *
+     */
     public function signup(SignupValidation $request){
         $type=$request->type;
         $user = new User();
@@ -32,8 +47,20 @@ class SignupController extends Controller
             }
                 break;
             case "PWSO":
+                $pwso=new PWSO();
+                $pwso->name=$request->name;
+                $pwso->phone=$request->phone;
+                $pwso->user_id=$user->id;
+                $pwso->save();
+                $id=$pwso->id;
                 break;
             case "WSO":
+                $wso=new WSO();
+                $wso->name=$request->name;
+                $wso->phone=$request->phone;
+                $wso->user_id=$user->id;
+                $wso->save();
+                $id=$wso->id;
                 break;
             default:
                 break;
@@ -50,16 +77,14 @@ class SignupController extends Controller
         return response()->json(['msg'=>'regestered successfully','id'=>$id,'token'=>$token],200);
     }
 
+    /**
+     * @param UserValidation $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function verify(UserValidation $request){
         $code=rand(111111,999999);
-        //TODO send an email from here
-
-       /* $row=User::all()->where('email','=',$request->email)->first();
-        $id=$row->id;
-        $user=User::all()->find($id);
-       */
-       $email=$request->email;
-       $username=$request->username;
+        $email=$request->email;
+        $username=$request->username;
 
         $smtpAddress = 'smtp.gmail.com';
         $port = 465;
@@ -92,6 +117,11 @@ class SignupController extends Controller
             return response()->json(['msg'=>'verification code was sent to the email','code'=>$code],200);
         }
 
-        return response()->json(['error'=>'this email is not correct'],200);
+        if ($request->type == "PWSO" || $request->type == "WSO"){
+
+            //TODO send email here to this email
+        }
+
+        return response()->json(['error'=>'this email is not correct'],404);
     }
 }

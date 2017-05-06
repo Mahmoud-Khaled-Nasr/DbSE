@@ -18,6 +18,7 @@ class CreateWSOsTable extends Migration
             $table->timestamps();
             $table->unsignedInteger('user_id');
             $table->string('name',50);
+            $table->string('phone',30);
         });
 
         Schema::table('wsos', function(Blueprint $table) {

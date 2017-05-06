@@ -36,7 +36,6 @@ class CreateUniversitiesTable extends Migration
             $table->double('x',20,15);
             $table->double('y',20,15);
 
-            //TODO put them in another tables with forgien keys
             $table->string('president_name',30);
             $table->string('past_presidents',255);
             $table->string('contacts',255);

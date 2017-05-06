@@ -30,7 +30,7 @@ class SignupValidation extends FormRequest
         $rule["password"]="required|min:8";
         $rule["type"]=[
             'required',
-            Rule::in(["VISITOR","PWSO"."WSO"])
+            Rule::in(["VISITOR","PWSO","WSO"])
         ];
         switch ($this->type){
             case "VISITOR":{
@@ -42,8 +42,15 @@ class SignupValidation extends FormRequest
             }
                 break;
             case "PWSO":
+                //TODO add check for the type of the workspace either premim or normal
+                $rule["workspace_id"]='required|exists:workspaces,id';
+                $rule["name"]='required';
+                $rule["phone"]='required|min:11';
                 break;
             case "WSO":
+                $rule["workspace_id"]='required|exists:workspaces,id';
+                $rule["name"]='required';
+                $rule["phone"]="required|min:11";
                 break;
             default:
                 break;
