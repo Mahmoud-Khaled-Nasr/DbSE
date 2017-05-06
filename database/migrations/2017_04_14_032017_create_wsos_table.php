@@ -13,19 +13,15 @@ class CreateWSOsTable extends Migration
      */
     public function up()
     {
-        /*
-         * TODO complete the WSO table
-         */
         Schema::create('wsos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->unsignedInteger('user_id');
+            $table->string('name',50);
+        });
 
-            $table->string('name',40);
-            $table->string('username',20)->unique();
-            $table->string('email',20)->unique();
-            $table->string('password',100);
-
-            //$table->unique(['username','email']);
+        Schema::table('wsos', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

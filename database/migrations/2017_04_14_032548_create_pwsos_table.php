@@ -13,19 +13,15 @@ class CreatePWSOsTable extends Migration
      */
     public function up()
     {
-        /*
-         * @TODO complete the PWSO table fields
-         */
         Schema::create('pwsos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->unsignedInteger('user_id');
+            $table->string('name',50);
+        });
 
-            $table->string('name',40);
-            $table->string('username',20)->unique();
-            $table->string('email',20)->unique();
-            $table->string('password',100);
-
-            //$table->unique(['username','email']);
+        Schema::table('pwsos', function(Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

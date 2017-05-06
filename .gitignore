@@ -3,6 +3,8 @@
 /public/hot
 /vendor
 /.idea
+/phpDocumentor.phar
+/docs
 Homestead.json
 Homestead.yaml
 

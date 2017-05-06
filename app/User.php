@@ -69,4 +69,14 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Visitor');
     }
+
+    public function wso()
+    {
+        return $this->hasOne('App\WSO');
+    }
+
+    public function pwso()
+    {
+        return $this->hasOne('App\PWSO');
+    }
 }
