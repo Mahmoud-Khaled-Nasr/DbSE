@@ -50,4 +50,8 @@ class PWSOController extends Controller
     {
         //
     }
+
+    public function upgrade(Request $request){
+
+    }
 }

@@ -12,6 +12,11 @@ class WSO extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function workspace()
+    {
+        return $this->belongsTo('App\Workspace');
+    }
 }
 
 

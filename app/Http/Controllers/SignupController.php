@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\PWSO;
 use App\Mailer;
+use App\Workspace;
+use Illuminate\Http\Request;
 use View;
 use App\User;
 use App\Visitor;
@@ -51,6 +53,7 @@ class SignupController extends Controller
                 $pwso->name=$request->name;
                 $pwso->phone=$request->phone;
                 $pwso->user_id=$user->id;
+                $pwso->workspace_id=$request->workspace_id;
                 $pwso->save();
                 $id=$pwso->id;
                 break;
@@ -59,6 +62,7 @@ class SignupController extends Controller
                 $wso->name=$request->name;
                 $wso->phone=$request->phone;
                 $wso->user_id=$user->id;
+                $wso->workspace_id=$request->workspace_id;
                 $wso->save();
                 $id=$wso->id;
                 break;
@@ -117,11 +121,13 @@ class SignupController extends Controller
             return response()->json(['msg'=>'verification code was sent to the email','code'=>$code],200);
         }
 
-        if ($request->type == "PWSO" || $request->type == "WSO"){
-
-            //TODO send email here to this email
-        }
-
         return response()->json(['error'=>'this email is not correct'],404);
+    }
+
+    public function verifyWorkspace (Request $request){
+        //TODO send email here to this email
+        $workspaceEmail=Workspace::all()->find($request->workspace_id)->toArray();
+        $workspaceEmail=$workspaceEmail['email'];
+
     }
 }

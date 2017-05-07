@@ -16,6 +16,9 @@ class CreateWorkspacesTable extends Migration
         Schema::create('workspaces', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->enum('type',['PAID','FREE']);
+            $table->string('name',25);
+            $table->string('email',50);
         });
     }
 

@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(InstituteTableSeeder::class);
         $this->call(AcademyTableSeeder::class);
         $this->call(AcadfacultyTableSeeder::class);
+        $this->call(WorkspaceTableSeeder::class);
+        $this->call(PWSOTableSeeder::class);
     }
 }

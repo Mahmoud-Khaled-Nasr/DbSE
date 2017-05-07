@@ -29,9 +29,14 @@ Route::group(['prefix'=>'v1'],function(){
         Route::resource('academy','AcademyController',['only'=>['show','index']]);
         Route::resource('acadfaculty','AcadfacultyController',['only'=>['show','index']]);
         Route::get('schoollocation/{city}', [
-            'uses' => 'SchoolController@showschools']);
+            'uses' => 'SchoolController@showschools'
+        ]);
         Route::get('schoollocation', [
-            'uses' => 'SchoolController@showcities']);
+            'uses' => 'SchoolController@showcities'
+        ]);
+        Route::post('upgrade/{id}',[
+            'uses'=>'PWSOController@upgrade'
+        ]);
     });
     Route::get('about',[
         'uses'=>'DbseController@about'
@@ -44,6 +49,9 @@ Route::group(['prefix'=>'v1'],function(){
     ]);
     Route::post('signupverify', [
         'uses'=>'signupController@verify'
+    ]);
+    Route::post('workspaceVerify', [
+        'uses'=>'signupController@verifyWorkspace'
     ]);
     Route::post('forgetpassword',[
         'uses'=>'ForgetPasswordController@getNewPassword'

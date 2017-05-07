@@ -23,5 +23,17 @@ class UsersTableSeeder extends Seeder
         $table->password=bcrypt("bbbb");
         $table->type='VISITOR';
         $table->save();
+        $table=new \App\User();
+        $table->username='pmk';
+        $table->email='pmk@gmail.com';
+        $table->password=bcrypt("aaaa");
+        $table->type='PWSO';
+        $table->save();
+        $table=new \App\User();
+        $table->username='wmk';
+        $table->email='wmk@gmail.com';
+        $table->password=bcrypt("aaaa");
+        $table->type='WSO';
+        $table->save();
     }
 }
