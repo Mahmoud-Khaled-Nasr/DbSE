@@ -14,12 +14,16 @@ class ForgetPasswordController extends Controller
 
     public function getNewPassword (ForgetPasswordValidation $request){
         $password=str_random(9);
-        $row=User::all()->where('email','=',$request->email)->first();
+        $row=User::where('email','=',$request->email)->first();
         $id=$row->id;
         $user=User::all()->find($id);
         $user->password=bcrypt($password);
         $user->save();
+
+        $email = $request->email;
+        $username = $user->username;
         //TODO send email to the user with the new password
+
 
         $smtpAddress = 'smtp.gmail.com';
         $port = 465;
@@ -42,9 +46,9 @@ class ForgetPasswordController extends Controller
         $html = $view->render();
 
         // Send email
-        $message = \Swift_Message::newInstance('DbSE app Resetting Password')
+        $message = \Swift_Message::newInstance('DbSE app Verification step')
             ->setFrom(['no-reply@dbse.com' => 'dbse team'])
-            ->setTo([$request->email => $user->username])
+            ->setTo([$email => $username])
             // If you want plain text instead, remove the second paramter of setBody
             ->setBody($html, 'text/html');
 

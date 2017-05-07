@@ -78,7 +78,7 @@ class SignupController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-        return response()->json(['msg'=>'regestered successfully','id'=>$id,'token'=>$token],200);
+        return response()->json(['msg'=>'registered successfully','id'=>$id,'token'=>$token],200);
     }
 
     /**
