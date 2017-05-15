@@ -13,7 +13,7 @@ class AcadfacultyTableSeeder extends Seeder
     public function run()
     {
         $faker=Faker\Factory::create();
-        for ($i=0;$i<100;$i++) {
+        for ($i=0;$i<20;$i++) {
             $table = new Acadfaculty();
             $table->academy_id = rand(0,40);
             $table->name = 'Faculty of '.$faker->jobTitle;
@@ -35,7 +35,7 @@ class AcadfacultyTableSeeder extends Seeder
             $table->contacts= $numbers;
             $table->description= $faker->realText(200);
             $table->city=$faker->city;
-            $temp=rand(2,5);
+            $temp=rand(1,3);
             $names=$faker->jobTitle.' deparment';
             for ($j=0;$j<$temp;$j++){
                 $names=$names.'/'.$faker->jobTitle.' deparment';

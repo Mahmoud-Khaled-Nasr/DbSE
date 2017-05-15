@@ -13,7 +13,7 @@ class InstituteTableSeeder extends Seeder
     public function run()
     {
         $faker=Faker\Factory::create();
-        for ($i=0;$i<100;$i++) {
+        for ($i=0;$i<20;$i++) {
             $table = new Institute();
             $city=$faker->city;
             $table->city=$city;
@@ -27,11 +27,11 @@ class InstituteTableSeeder extends Seeder
                 $numbers=$numbers.'/'.$faker->phoneNumber;
             }
             $table->contacts= $numbers;
-            $table->description = $faker->realText(200);
-            $temp=rand(2,5);
-            $names=$faker->jobTitle.' deparment';
+            $table->description = $faker->realText(50);
+            $temp=rand(1,3);
+            $names=$faker->jobTitle.' department';
             for ($j=0;$j<$temp;$j++){
-                $names=$names.'/'.$faker->jobTitle.' deparment';
+                $names=$names.'/'.$faker->jobTitle.' department';
             }
             $table->departments = $names;
             $table->x = rand(100, 900) / 100;

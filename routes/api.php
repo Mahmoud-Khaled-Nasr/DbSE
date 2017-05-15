@@ -28,6 +28,7 @@ Route::group(['prefix'=>'v1'],function(){
         Route::resource('institute','InstituteController',['only'=>['show','index']]);
         Route::resource('academy','AcademyController',['only'=>['show','index']]);
         Route::resource('acadfaculty','AcadfacultyController',['only'=>['show','index']]);
+        Route::resource('workspace','WorkspaceController',['only'=>['show','edit']]);
         Route::get('schoollocation/{city}', [
             'uses' => 'SchoolController@showschools'
         ]);
@@ -36,6 +37,12 @@ Route::group(['prefix'=>'v1'],function(){
         ]);
         Route::post('upgrade/{id}',[
             'uses'=>'PWSOController@upgrade'
+        ]);
+        Route::get('workspaceslist/{governorate}', [
+            'uses'=>'WorkspaceController@showworkspaces'
+        ]);
+        Route::get('workspaceslist', [
+            'uses'=>'WorkspaceController@showstates'
         ]);
     });
     Route::get('about',[
@@ -56,6 +63,7 @@ Route::group(['prefix'=>'v1'],function(){
     Route::post('forgetpassword',[
         'uses'=>'ForgetPasswordController@getNewPassword'
     ]);
+
 
 } ) ;
 

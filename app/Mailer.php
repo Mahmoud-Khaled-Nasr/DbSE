@@ -7,15 +7,16 @@
  */
 
 namespace App;
+use View;
 
 
 class Mailer
 {
-    private const SMTPADDRESS = 'smtp.gmail.com';
-    private const PORT = 465;
-    private const ENCRYPTION = 'ssl';
-    private const EMAIL = 'dbseteam@gmail.com';
-    private const PASSWORD = 'Asd123456789';
+     const SMTPADDRESS = 'smtp.gmail.com';
+     const PORT = 465;
+     const ENCRYPTION = 'ssl';
+     const EMAIL = 'dbseteam@gmail.com';
+     const PASSWORD = 'Asd123456789';
 
     private $emailView;
     private $body;
@@ -35,7 +36,7 @@ class Mailer
         $this->name=$name;
     }
 
-    public function sendMail (){
+    public function sendMail ($msg,$code=null){
         // Prepare transport
         $transport = \Swift_SmtpTransport::newInstance(Mailer::SMTPADDRESS, Mailer::PORT, Mailer::ENCRYPTION)
             ->setUsername(Mailer::EMAIL)
@@ -55,8 +56,17 @@ class Mailer
             ->setTo([$this->email => $this->name])
             // If you want plain text instead, remove the second paramter of setBody
             ->setBody($html, 'text/html');
+        $var=$mailer->send($message);
+        if($var){
+            if($code!=null) {
+                return response()->json(['msg' => $msg, 'code' => $code], 200);
+            }
+            else {
+                return response()->json(['msg' => $msg], 200);
+            }
+        }
 
-        return($mailer->send($message));
+        return response()->json(['error'=>'this email is not correct'],404);
     }
 
 }

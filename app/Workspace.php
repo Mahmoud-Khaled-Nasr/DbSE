@@ -15,4 +15,13 @@ class Workspace extends Model
     {
         return $this->hasMany('App\WSO');
     }
+
+    public function getBasicWorkspacesData(Workspace $ws)
+    {
+        $response =array();
+        foreach ($ws as $workspace ){
+            array_push($response,['name'=>$workspace->name , 'id'=>$workspace->id ,'logo'=>$workspace->logo , 'rate'=>$workspace->rate]);
+        }
+        return $response;
+    }
 }

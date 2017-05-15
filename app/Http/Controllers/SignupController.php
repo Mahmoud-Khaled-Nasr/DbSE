@@ -90,38 +90,8 @@ class SignupController extends Controller
         $email=$request->email;
         $username=$request->username;
 
-        $smtpAddress = 'smtp.gmail.com';
-        $port = 465;
-        $encryption = 'ssl';
-        $yourEmail = 'dbseteam@gmail.com';
-        $yourPassword = 'Asd123456789';
-
-        // Prepare transport
-        $transport = \Swift_SmtpTransport::newInstance($smtpAddress, $port, $encryption)
-            ->setUsername($yourEmail)
-            ->setPassword($yourPassword);
-        $mailer = \Swift_Mailer::newInstance($transport);
-
-
-        // Prepare content
-        $view = View::make('email.confirmation', [
-            'message' => $code
-        ]);
-
-        $html = $view->render();
-
-        // Send email
-        $message = \Swift_Message::newInstance('DbSE app Verification step')
-            ->setFrom(['no-reply@dbse.com' => 'dbse team'])
-            ->setTo([$email => $username])
-            // If you want plain text instead, remove the second paramter of setBody
-            ->setBody($html, 'text/html');
-
-        if($mailer->send($message)){
-            return response()->json(['msg'=>'verification code was sent to the email','code'=>$code],200);
-        }
-
-        return response()->json(['error'=>'this email is not correct'],404);
+        $messag= new Mailer('email.confirmation', $code,'DbSE app Verification step', $email, $username);
+        $messag->sendMail('verification code was sent to the email',$code);
     }
 
     public function verifyWorkspace (Request $request){
