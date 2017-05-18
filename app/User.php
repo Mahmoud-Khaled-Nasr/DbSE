@@ -79,4 +79,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\PWSO');
     }
+
+    public function workspaces()
+    {
+        return $this->belongsToMany('App\Workspace')->withPivot(['rate']);
+    }
 }

@@ -21,6 +21,11 @@ class Workspace extends Model
         return $this->hasMany('App\Event');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany('App\User')->withPivot(['rate']);
+    }
+
     public static function isWorkspaceExists($id){
         if (count(Workspace::all()->find($id)) != 0)
             return true;

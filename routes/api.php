@@ -41,6 +41,15 @@ Route::group(['prefix'=>'v1'],function(){
         Route::post('upgrade/{id}',[
             'uses'=>'PWSOController@upgrade'
         ]);
+        Route::get('rate/{workspace_id}',[
+            'uses'=>'RateController@getRate'
+        ]);
+        Route::post('rate',[
+            'uses'=>'RateController@updateRate'
+        ]);
+        Route::post('personalrate',[
+            'uses'=>'RateController@personalRate'
+        ]);
     });
     Route::get('about',[
         'uses'=>'DbseController@about'

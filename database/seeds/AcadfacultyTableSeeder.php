@@ -35,7 +35,7 @@ class AcadfacultyTableSeeder extends Seeder
             $table->contacts= $numbers;
             $table->description= $faker->realText(200);
             $table->city=$faker->city;
-            $temp=rand(2,5);
+            $temp=rand(1,3);
             $names=$faker->jobTitle.' deparment';
             for ($j=0;$j<$temp;$j++){
                 $names=$names.'/'.$faker->jobTitle.' deparment';
