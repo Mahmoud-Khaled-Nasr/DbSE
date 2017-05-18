@@ -1,7 +1,10 @@
 <?php
 namespace App\Http\Controllers;
+use App\PWSO;
 use App\User;
 use App\Visitor;
+use App\Workspace;
+use App\WSO;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -43,17 +46,22 @@ class SigninController extends Controller
         switch ($type){
             case "VISITOR":{
                 $id=User::all()->find($userid)->visitor->id;
+                return response()->json(compact('token','id','type'));
             }
             break;
             case "WSO":{
                 $id=User::all()->find($userid)->wso->id;
+                $workspaceId=WSO::all()->find($id)->workspace->id;
+                return response()->json(compact('token','id','type','workspaceId'));
             }
-                break;
+            break;
             case "PWSO":{
                 $id=User::all()->find($userid)->pwso->id;
+                $workspaceId=PWSO::all()->find($id)->workspace->id;
+                return response()->json(compact('token','id','type','workspaceId'));
             }
-                break;
+            break;
         }
-        return response()->json(compact('token','id','type'));
+
     }
 }

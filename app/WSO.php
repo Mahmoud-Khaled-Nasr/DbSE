@@ -17,6 +17,13 @@ class WSO extends Model
     {
         return $this->belongsTo('App\Workspace');
     }
+
+    public static function isWSOExists ($id){
+        if (count(WSO::all()->find($id)) != 0)
+            return true;
+        else
+            return false;
+    }
 }
 
 

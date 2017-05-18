@@ -128,6 +128,7 @@ class SignupController extends Controller
         //TODO send email here to this email
         $workspaceEmail=Workspace::all()->find($request->workspace_id)->toArray();
         $workspaceEmail=$workspaceEmail['email'];
-
+        $code=rand(111111,999999);
+        return response()->json(['msg'=>'verification code was sent to the email','code'=>$code],200);
     }
 }

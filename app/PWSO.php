@@ -17,4 +17,11 @@ class PWSO extends Model
     {
         return $this->belongsTo('App\Workspace');
     }
+
+    public static function isPWSOExists ($id){
+        if (count(PWSO::all()->find($id)) != 0)
+            return true;
+        else
+            return false;
+    }
 }
