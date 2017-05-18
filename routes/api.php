@@ -28,6 +28,10 @@ Route::group(['prefix'=>'v1'],function(){
         Route::resource('institute','InstituteController',['only'=>['show','index']]);
         Route::resource('academy','AcademyController',['only'=>['show','index']]);
         Route::resource('acadfaculty','AcadfacultyController',['only'=>['show','index']]);
+        Route::resource('event','EventController',['except'=>['create', 'index','edit']]);
+        Route::get('workspaceevents/{workspace_id}',[
+            'uses'=>'EventController@showEvents'
+        ]);
         Route::get('schoollocation/{city}', [
             'uses' => 'SchoolController@showschools'
         ]);
