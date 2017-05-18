@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\PWSO;
 use App\User;
+use App\Http\Requests\PWSOValidation;
 use Illuminate\Http\Request;
 
 class PWSOController extends Controller
@@ -41,9 +42,18 @@ class PWSOController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PWSOValidation $request, $id)
     {
-        //
+        if (! PWSO::isPWSOExists($id))
+            return response()->json(["error"=>"wrong id"],409);
+        $pwso=PWSO::all()->find($id);
+        $pwso->name=$request->name;
+        $pwso->phone=$request->phone;
+        $user=PWSO::all()->find($id)->user;
+        $user->email=$request->email;
+        $user->username=$request->username;
+        $user->password=$request->password;
+        return response()->json(["msg"=>"updated successfully"],200);
     }
 
     /**

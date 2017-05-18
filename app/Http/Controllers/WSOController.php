@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WSOValidation;
 use App\WSO;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -42,9 +43,18 @@ class WSOController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WSOValidation $request, $id)
     {
-        //
+        if (! WSO::isWSOExists($id))
+            return response()->json(["error"=>"wrong id"],409);
+        $wso=WSO::all()->find($id);
+        $wso->name=$request->name;
+        $wso->phone=$request->phone;
+        $user=WSO::all()->find($id)->user;
+        $user->email=$request->email;
+        $user->username=$request->username;
+        $user->password=$request->password;
+        return response()->json(["msg"=>"updated successfully"],200);
     }
 
     /**
