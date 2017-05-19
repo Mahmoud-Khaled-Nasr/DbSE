@@ -46,7 +46,6 @@ class CreateWorkspacesTable extends Migration
             $table->boolean('smoking_area');
             $table->boolean('cafeteria');
             $table->boolean('cyber');
-            $table->float('rate',1,1);
         });
     }
 

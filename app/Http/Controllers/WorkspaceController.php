@@ -110,7 +110,6 @@ class WorkspaceController extends Controller
         $workspace = Workspace::where('id','=',$id)->firstOrFail();
         $response = [
             'workspace' => $workspace,
-            //'pics'=>$pics
         ];
 
         return response()->json($response,200);

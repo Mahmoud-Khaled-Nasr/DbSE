@@ -42,7 +42,6 @@ class WorkspaceTableSeeder extends Seeder
             $table->video = "storage/workspaces/4.jpg";
             $table->x = rand(100, 900) / 100;
             $table->y = rand(100, 900) / 100;
-            $table->rate = rand(100, 500) / 100;
             $table->air_conditioning =(rand(0,1))?'1':'0';
             $table->private_rooms =(rand(0,1))?'1':'0';
             $table->data_show =(rand(0,1))?'1':'0';
