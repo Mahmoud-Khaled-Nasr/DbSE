@@ -22,11 +22,14 @@ class CreateWorkspacesTable extends Migration
             $table->string('state',25);
             $table->string('city',25);
             $table->string('logo',255);
+            $table->string('pic1',255);
+            $table->string('pic2',255);
+            $table->string('pic3',255);
+            $table->string('video',255)->nullable();
             $table->string('location',100);
             $table->string('contacts',255);
             $table->string('website_url',255);
             $table->string('facebook_page',255);
-            $table->float('rate',2,1);
             $table->string('description',255);
             $table->string('classification',100);
             $table->float('fees',6,3);
@@ -43,6 +46,7 @@ class CreateWorkspacesTable extends Migration
             $table->boolean('smoking_area');
             $table->boolean('cafeteria');
             $table->boolean('cyber');
+            $table->float('rate',1,1);
         });
     }
 

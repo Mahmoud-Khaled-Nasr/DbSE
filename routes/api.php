@@ -38,11 +38,14 @@ Route::group(['prefix'=>'v1'],function(){
         Route::post('upgrade/{id}',[
             'uses'=>'PWSOController@upgrade'
         ]);
-        Route::get('workspaceslist/{governorate}', [
+        Route::get('workspaceslist/{state}', [
             'uses'=>'WorkspaceController@showworkspaces'
         ]);
         Route::get('workspaceslist', [
             'uses'=>'WorkspaceController@showstates'
+        ]);
+        Route::post('workspacessearch', [
+            'uses'=>'WorkspaceController@searchworkspaces'
         ]);
     });
     Route::get('about',[
@@ -63,7 +66,9 @@ Route::group(['prefix'=>'v1'],function(){
     Route::post('forgetpassword',[
         'uses'=>'ForgetPasswordController@getNewPassword'
     ]);
-
+    Route::post('workspacesearch', [
+        'uses'=>'WorkspaceController@searchworkspace'
+    ]);
 
 } ) ;
 

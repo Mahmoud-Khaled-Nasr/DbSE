@@ -26,7 +26,6 @@ class WorkspaceTableSeeder extends Seeder
             $table->location = $faker->address;
             $table->website_url = $faker->url;
             $table->facebook_page = $faker->url;
-            $table->rate=rand(100, 500) / 100;
             $temp=rand(1,3);
             $numbers=$faker->phoneNumber;
             for ($j=0;$j<$temp;$j++){
@@ -36,9 +35,14 @@ class WorkspaceTableSeeder extends Seeder
             $table->fees =($table->type=='PAID')? rand(100, 900) / 10:0;
             $table->description= $faker->realText(200);
             $table->classification = str_random(10);
-            $table->logo = str_random(10);
+            $table->logo = "storage/workspaces/4.jpg";
+            $table->pic1 = "storage/workspaces/4.jpg";
+            $table->pic2 = "storage/workspaces/4.jpg";
+            $table->pic3 = "storage/workspaces/4.jpg";
+            $table->video = "storage/workspaces/4.jpg";
             $table->x = rand(100, 900) / 100;
             $table->y = rand(100, 900) / 100;
+            $table->rate = rand(100, 500) / 100;
             $table->air_conditioning =(rand(0,1))?'1':'0';
             $table->private_rooms =(rand(0,1))?'1':'0';
             $table->data_show =(rand(0,1))?'1':'0';

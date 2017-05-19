@@ -164,6 +164,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
+        //search
+        TomLingham\Searchy\SearchyServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -229,6 +232,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        //search
+        'Searchy' => TomLingham\Searchy\Facades\Searchy::class,
 
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class
     ],

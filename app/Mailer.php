@@ -36,7 +36,7 @@ class Mailer
         $this->name=$name;
     }
 
-    public function sendMail ($msg,$code=null){
+    public function sendMail (){
         // Prepare transport
         $transport = \Swift_SmtpTransport::newInstance(Mailer::SMTPADDRESS, Mailer::PORT, Mailer::ENCRYPTION)
             ->setUsername(Mailer::EMAIL)
@@ -57,16 +57,10 @@ class Mailer
             // If you want plain text instead, remove the second paramter of setBody
             ->setBody($html, 'text/html');
         $var=$mailer->send($message);
-        if($var){
-            if($code!=null) {
-                return response()->json(['msg' => $msg, 'code' => $code], 200);
-            }
-            else {
-                return response()->json(['msg' => $msg], 200);
-            }
-        }
-
-        return response()->json(['error'=>'this email is not correct'],404);
+        if($var)
+            return true;
+        else
+            return false;
     }
 
 }

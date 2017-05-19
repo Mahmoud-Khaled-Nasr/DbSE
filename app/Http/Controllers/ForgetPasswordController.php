@@ -27,8 +27,9 @@ class ForgetPasswordController extends Controller
 
 
         $messag= new Mailer('email.reset-password', $password,'DbSE app Reset Password', $email, $username);
-        $messag->sendMail('the password has been reset and sent to the email');
-
+        $check=$messag->sendMail();
+        if($check)
+            return response()->json(['msg' => 'the password has been reset and sent to the email'], 200);
     }
 
 }
