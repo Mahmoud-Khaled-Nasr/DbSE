@@ -7,15 +7,16 @@
  */
 
 namespace App;
+use View;
 
 
 class Mailer
 {
-    private const SMTPADDRESS = 'smtp.gmail.com';
-    private const PORT = 465;
-    private const ENCRYPTION = 'ssl';
-    private const EMAIL = 'dbseteam@gmail.com';
-    private const PASSWORD = 'Asd123456789';
+     const SMTPADDRESS = 'smtp.gmail.com';
+     const PORT = 465;
+     const ENCRYPTION = 'ssl';
+     const EMAIL = 'dbseteam@gmail.com';
+     const PASSWORD = 'Asd123456789';
 
     private $emailView;
     private $body;
@@ -55,8 +56,11 @@ class Mailer
             ->setTo([$this->email => $this->name])
             // If you want plain text instead, remove the second paramter of setBody
             ->setBody($html, 'text/html');
-
-        return($mailer->send($message));
+        $var=$mailer->send($message);
+        if($var)
+            return true;
+        else
+            return false;
     }
 
 }

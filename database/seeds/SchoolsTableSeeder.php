@@ -14,7 +14,7 @@ class SchoolsTableSeeder extends Seeder
         $cities=array("cairo","giza","alex","aswan","port said");
 
         $faker=Faker\Factory::create();
-        for ($i=0;$i<100;$i++) {
+        for ($i=0;$i<20;$i++) {
             $table = new School();
             $table->name = $faker->firstName.' school';
             $table->city=$cities[rand(0,4)];

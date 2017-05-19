@@ -46,8 +46,8 @@ class VisitorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param VisitorValidation|Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(VisitorValidation $request, $id)

@@ -13,7 +13,7 @@ class AcadfacultyTableSeeder extends Seeder
     public function run()
     {
         $faker=Faker\Factory::create();
-        for ($i=0;$i<100;$i++) {
+        for ($i=0;$i<20;$i++) {
             $table = new Acadfaculty();
             $table->academy_id = rand(0,40);
             $table->name = 'Faculty of '.$faker->jobTitle;
