@@ -18,7 +18,7 @@ class InstituteTableSeeder extends Seeder
             $city=$faker->city;
             $table->city=$city;
             $table->name = $city.' institute';
-            $table->fees = rand(100, 900) / 100;
+            $table->fees = rand(1000, 9000);
             $table->website_url = $faker->url;
             $table->facebook_page = $faker->url;
             $temp=rand(1,3);

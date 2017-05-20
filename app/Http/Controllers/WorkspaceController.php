@@ -159,7 +159,7 @@ class WorkspaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id,$request)
+    public function update($id,Request $request)
     {
         Workspace::updatews($id,$request);
         return response(["msg"=>"updated successfully"],200);

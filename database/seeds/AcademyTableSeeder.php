@@ -25,9 +25,9 @@ class AcademyTableSeeder extends Seeder
                 $numbers=$numbers.'/'.$faker->phoneNumber;
             }
             $table->contacts= $numbers;
-            $table->description= $faker->realText(200);
-            $table->logo= str_random(20);
-            $table->pic1= str_random(20);
+            $table->description= $faker->realText(50);
+            $table->logo= "storage/academies/1/logo.jpg";
+            $table->pic1= "storage/academies/1/w.jpg";
             $table->pic2= str_random(20);
             $table->location= $faker->address;
             $table->x=rand(100,900)/100 ;

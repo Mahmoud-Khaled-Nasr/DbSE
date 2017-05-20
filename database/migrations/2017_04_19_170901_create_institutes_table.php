@@ -26,7 +26,7 @@ class CreateInstitutesTable extends Migration
             $table->double('x',20,15);
             $table->double('y',20,15);
             $table->string('departments',255);
-            $table->float('fees',4,2)->nullable();
+            $table->float('fees',8,3)->nullable();
             $table->string('others',255)->nullable();
 
 

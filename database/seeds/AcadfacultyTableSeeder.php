@@ -17,9 +17,9 @@ class AcadfacultyTableSeeder extends Seeder
             $table = new Acadfaculty();
             $table->academy_id = rand(0,40);
             $table->name = 'Faculty of '.$faker->jobTitle;
-            $table->fees = rand(100, 900) / 100;
+            $table->fees = rand(1000, 9000);
             $table->president_name = $faker->name;
-            $temp=rand(3,9);
+            $temp=rand(1,3);
             $names=$faker->name;
             for ($j=0;$j<$temp;$j++){
                 $names=$names.'/'.$faker->name;
@@ -33,7 +33,7 @@ class AcadfacultyTableSeeder extends Seeder
                 $numbers=$numbers.'/'.$faker->phoneNumber;
             }
             $table->contacts= $numbers;
-            $table->description= $faker->realText(200);
+            $table->description= $faker->realText(50);
             $table->city=$faker->city;
             $temp=rand(1,3);
             $names=$faker->jobTitle.' deparment';
@@ -41,9 +41,9 @@ class AcadfacultyTableSeeder extends Seeder
                 $names=$names.'/'.$faker->jobTitle.' deparment';
             }
             $table->departments = $names;
-            $table->logo = str_random(10);
-            $table->pic1 = str_random(10);
-            $table->pic2 = str_random(10);
+            $table->logo = "storage/acadfaculties/1/logo.jpg";
+            $table->pic1 = "storage/acadfaculties/1/logo.jpg";
+            $table->pic2 = "storage/acadfaculties/1/w.jpg";
             $table->x = rand(100, 900) / 100;
             $table->y = rand(100, 900) / 100;
             $table->location=$faker->address;

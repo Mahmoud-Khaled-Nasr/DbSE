@@ -25,7 +25,7 @@ class CreateSchoolsTable extends Migration
             $table->string('facebook_page',255);
             $table->string('description',255);
             $table->string('classification',100);
-            $table->float('fees',6,2);
+            $table->float('fees',8,3);
             $table->double('x',20,15);
             $table->double('y',20,15);
             $table->string('others',255);

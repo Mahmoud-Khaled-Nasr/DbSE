@@ -13,11 +13,11 @@ class FacultyTableSeeder extends Seeder
     public function run()
     {
         $faker=Faker\Factory::create();
-        for ($i=0;$i<100;$i++) {
+        for ($i=0;$i<20;$i++) {
             $table = new Faculty();
             $table->university_id = rand(1,15);
             $table->name = 'Faculty of '.$faker->jobTitle;
-            $table->fees = rand(100, 900) / 100;
+            $table->fees = rand(1000, 9000);
             $table->president_name = $faker->name;
             $temp=rand(3,9);
             $names=$faker->name;
@@ -41,9 +41,9 @@ class FacultyTableSeeder extends Seeder
                 $names=$names.'/'.$faker->jobTitle.' deparment';
             }
             $table->departments = $names;
-            $table->logo = str_random(10);
-            $table->pic1 = str_random(10);
-            $table->pic2 = str_random(10);
+            $table->logo = "storage/faculties/1/logo.jpg";
+            $table->pic1 = "storage/faculties/1/logo.jpg";
+            $table->pic2 = "storage/faculties/1/w.jpg";
             $table->x = rand(100, 900) / 100;
             $table->y = rand(100, 900) / 100;
             $table->location=$faker->address;

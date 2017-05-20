@@ -27,11 +27,11 @@ class SchoolsTableSeeder extends Seeder
                 $numbers=$numbers.'/'.$faker->phoneNumber;
             }
             $table->contacts= $numbers;
-            $table->fees = rand(100, 900) / 100;
-            $table->description= $faker->realText(200);
-            $table->others = str_random(50);
+            $table->fees = rand(1000, 9000);
+            $table->description= $faker->realText(50);
+            $table->others = str_random(20);
             $table->classification = str_random(10);
-            $table->logo = str_random(10);
+            $table->logo = "storage/schools/1/logo.jpg";
             $table->x = rand(100, 900) / 100;
             $table->y = rand(100, 900) / 100;
 
