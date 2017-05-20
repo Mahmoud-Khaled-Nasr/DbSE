@@ -17,7 +17,7 @@ class CreateUserWorkspaceTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('workspace_id');
-            $table->unsignedInteger('rate');
+            $table->float('rate',2,1);
         });
 
         Schema::table('user_workspace', function(Blueprint $table) {

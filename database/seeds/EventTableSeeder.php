@@ -22,4 +22,6 @@ class EventTableSeeder extends Seeder
             $event->save();
         }
     }
+
+
 }

@@ -97,12 +97,10 @@ class SignupController extends Controller
     }
 
     public function verifyWorkspace (Request $request){
-        //TODO send email here to this email
         $workspaceEmail=Workspace::all()->find($request->workspace_id)->toArray();
         $workspaceName=$workspaceEmail['name'];
         $workspaceEmail=$workspaceEmail['email'];
         $code=rand(111111,999999);
-
         $messag= new Mailer('email.wsconfirmation', $code,'DbSE app Verification step', $workspaceEmail, $workspaceName);
         $check=$messag->sendMail();
         if($check)

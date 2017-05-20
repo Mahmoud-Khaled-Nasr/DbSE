@@ -43,6 +43,18 @@ class Workspace extends Model
         return $response;
     }
 
+    public static function rate($wsid)
+    {
+        $workspace= Workspace::all()->find($wsid);
+        $totalSum = 0;
+        $count = 0;
+        foreach ($workspace->users as $user){
+            $totalSum+= $user->pivot->rate;
+            $count++;
+        }
+        return $rate=($count==0)?0:((float)$totalSum/$count);
+    }
+
     public static function updatews($id,$request)
     {
         $ws=Workspace::all()->find($id);

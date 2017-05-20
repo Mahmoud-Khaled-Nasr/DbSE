@@ -49,18 +49,29 @@ class RateController extends Controller
                 $user_id=WSO::all()->find($id)->user->id;
                 break;
         }
-        $temp=User::all()->find($user_id)->workspaces->find($workspace_id)->pivot;
+        //user doesn't exists , workspace DE , both does not exist
+
+
+        $temp=User::all()->find($user_id)->workspaces;//->toArray(); //->find($workspace_id)->pivot;
+
         if ($temp==null){
             $user=User::all()->find($user_id);
             $user->workspaces()->attach($workspace_id,['rate'=> $request->rate ]) ;
             return response()->json(['msg'=>'rated successfully'],200);
-        }else{
-            $users=User::all()->find($user_id);
-            foreach ($users->workspaces as $work){
-                if ($work->id == $workspace_id) {
-                    $work->pivot->rate = $request->rate;
-                    $work->pivot->save();
-                }
+        }
+
+        $temp=User::all()->find($user_id)->workspaces->find($workspace_id);
+        if ($temp==null){
+            $user=User::all()->find($user_id);
+            $user->workspaces()->attach($workspace_id,['rate'=> $request->rate ]) ;
+            return response()->json(['msg'=>'rated successfully'],200);
+        }
+
+        $users=User::all()->find($user_id);
+        foreach ($users->workspaces as $work){
+            if ($work->id == $workspace_id) {
+                $work->pivot->rate = $request->rate;
+                $work->pivot->save();
             }
         }
         return response()->json(['msg'=>'rated successfully']);

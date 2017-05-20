@@ -15,7 +15,7 @@ class UserWorkspaceSeeder extends Seeder
         for ($i=1;$i<=4;$i++){
             $user=User::all()->find($i);
             for ($j=0;$j<5;$j++){
-                $user->workspaces()->attach($j,['rate'=> rand(0,5) ]) ;
+                $user->workspaces()->attach($j,['rate'=> rand(0, 500) / 100 ]) ;
             }
         }
     }

@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AcadfacultyTableSeeder::class);
         $this->call(WorkspaceTableSeeder::class);
         $this->call(PWSOTableSeeder::class);
-        $this->call(EventTableSeeder::class);
+        $this->call(EventTableSeeder::class );
         $this->call(UserWorkspaceSeeder::class);
     }
 }

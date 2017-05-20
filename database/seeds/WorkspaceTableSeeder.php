@@ -39,7 +39,7 @@ class WorkspaceTableSeeder extends Seeder
             $table->pic1 = "storage/workspaces/4.jpg";
             $table->pic2 = "storage/workspaces/4.jpg";
             $table->pic3 = "storage/workspaces/4.jpg";
-            $table->video = "storage/workspaces/4.jpg";
+            $table->video = "1CjH_95nr8o";
             $table->x = rand(100, 900) / 100;
             $table->y = rand(100, 900) / 100;
             $table->air_conditioning =(rand(0,1))?'1':'0';

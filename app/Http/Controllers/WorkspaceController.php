@@ -25,6 +25,13 @@ class WorkspaceController extends Controller
         return response()->json($response,200);
     }
 
+    public function showstate()
+    {
+        $states = \DB::select('SELECT DISTINCT state FROM workspaces;');
+        $response = $states;
+        return response()->json($response,200);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +42,33 @@ class WorkspaceController extends Controller
         $workspaces = Workspace::all()->where('state','=',$state);
         $response = array();
         foreach ($workspaces as $workspace ){
-            array_push($response,['id'=>$workspace->id , 'name'=>$workspace->name ,'logo'=>$workspace->logo , 'rate'=>$workspace->rate]);
+            $totalSum = 0;
+            $count = 0;
+            foreach ($workspace->users as $user){
+                $totalSum+= $user->pivot->rate;
+                $count++;
+            }
+            $rate=($count==0)?0:((float)$totalSum/$count);
+            array_push($response,['id'=>$workspace->id , 'name'=>$workspace->name ,'logo'=>$workspace->logo , 'rate'=>$rate]);
+        }
+        return response()->json($response,200);
+
+
+    }
+
+    public function showworkspace($state)
+    {
+        $workspaces = Workspace::all()->where('state','=',$state);
+        $response = array();
+        foreach ($workspaces as $workspace ){
+            $totalSum = 0;
+            $count = 0;
+            foreach ($workspace->users as $user){
+                $totalSum+= $user->pivot->rate;
+                $count++;
+            }
+            $rate=($count==0)?0:((float)$totalSum/$count);
+            array_push($response,['id'=>$workspace->id , 'name'=>$workspace->name ,'logo'=>$workspace->logo , 'rate'=>$rate]);
         }
         return response()->json($response,200);
 
@@ -66,6 +99,11 @@ class WorkspaceController extends Controller
         $cafeteria=$request->cafeteria;
         $cyber=$request->cyber;
         $wss = Searchy::search('workspaces')->fields('name::state::city::type::air_conditioning::private_rooms::data_show::wifi::laser_cutter::printing_3D::PCB_printing::girls_area::smoking_area::cafeteria::cyber')->query($name.'::'.$state.'::'.$city.'::'.$type.'::'.$air_conditioning.'::'.$private_rooms.'::'.$data_show.'::'.$wifi.'::'.$laser_cutter.'::'.$printing_3D.'::'.$PCB_printing.'::'.$girls_area.'::'.$smoking_area.'::'.$cafeteria.'::'.$cyber)->get();
+        foreach ($wss as $ws)
+        {
+            $rate=Workspace::rate($ws->id);
+            $ws->rate=$rate;
+        }
         return response()->json($wss,200);
 
     }
@@ -121,7 +159,7 @@ class WorkspaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id,$request)
+    public function update($id,$request)
     {
         Workspace::updatews($id,$request);
         return response(["msg"=>"updated successfully"],200);

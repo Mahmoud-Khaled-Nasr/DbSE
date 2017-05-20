@@ -32,7 +32,7 @@ Route::group(['prefix'=>'v1'],function(){
         Route::get('workspaceevents/{workspace_id}',[
             'uses'=>'EventController@showEvents'
         ]);
-        Route::resource('workspace','WorkspaceController',['only'=>['show','edit']]);
+        Route::resource('workspace','WorkspaceController',['only'=>['show','update']]);
 
         Route::get('schoollocation/{city}', [
             'uses' => 'SchoolController@showschools'
@@ -74,7 +74,7 @@ Route::group(['prefix'=>'v1'],function(){
     Route::post('signupverify', [
         'uses'=>'signupController@verify'
     ]);
-    Route::post('workspaceVerify', [
+    Route::post('workspaceverify', [
         'uses'=>'signupController@verifyWorkspace'
     ]);
     Route::post('forgetpassword',[
@@ -82,6 +82,12 @@ Route::group(['prefix'=>'v1'],function(){
     ]);
     Route::post('workspacesearch', [
         'uses'=>'WorkspaceController@searchworkspace'
+    ]);
+    Route::get('workspacelist/{state}', [
+        'uses'=>'WorkspaceController@showworkspace'
+    ]);
+    Route::get('workspacelist', [
+        'uses'=>'WorkspaceController@showstate'
     ]);
 
 } ) ;
