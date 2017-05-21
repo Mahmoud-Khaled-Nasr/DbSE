@@ -60,6 +60,7 @@ class Workspace extends Model
         $ws=Workspace::all()->find($id);
         $ws->name=$request->name;
         $ws->type=$request->type;
+        $ws->video=$request->video;
         $ws->contacts=$request->contacts;
         $ws->website_url=$request->website_url;
         $ws->facebook_page=$request->facebook_page;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PWSO;
+use App\WSO;
 use App\Mailer;
 use App\Workspace;
 use Illuminate\Http\Request;
